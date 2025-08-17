@@ -1,0 +1,26 @@
+1.Desgin by thinking what the User is going to do
+2.Pick a theme with:
+realtime colors
+
+Order_of_making_things:
+    visual hierarchy
+    contrast
+    balance
+    consistency
+    simplicity 
+tools
+    fimga
+My ui:
+    Raylibs - keep it simple:
+    -pure functionality no need looks
+    -3 main areas:
+        -left : number drawing control
+        -middle : box to draw numbers on
+        -right : ai result reset etc           
+    JS and html
+    -make it look good
+    -it should just be able to run the basic ai algorithm after the raylib's project is finished
+    Theme - C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_dectector\UI_inspirations\Ui-Trends-2023.png
+    Two main areas:
+        -left middle : boxes to draw numbers
+        -right : run the ai and find out

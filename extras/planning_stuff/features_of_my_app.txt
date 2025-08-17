@@ -1,0 +1,8 @@
+2 apps
+raylibs - simple only designed to train the ai and produce numbers:
+    file control buttons on the left for number file control
+    middle buttons to draw numbers
+    right side for ai anwser result and testing
+js and html app - webapp meant only for the user to interact with the ai number detector
+    left and middle - buttons to draw numbers
+    right button to show the result and test the ai

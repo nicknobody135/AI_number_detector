@@ -1,0 +1,29 @@
+left:
+    reset button
+    file selector:
+        export button
+        import button
+    choose export file group
+    import entire file directory
+    bottom left left button shows the file name and the bottom left right button shows the iteration
+middle: - done
+    Boxes in a grid of 24 x 36 boxes
+    top left box, top left conner is at 596 x 182
+    use 1 box of 17x17 placed at 596 x 182 and place it over and over again
+    place 24 boxes on the y by 36 along the x to
+    turn boxes black when clicked on
+right:
+    train ai button:
+        run a function that trains the ai based on the training data provided
+    run ai button:
+        makes
+    result area
+
+additional functions:
+    ai function:
+        handle input and dilevery of the anwser
+        handle training
+    number function:
+        handle the files:
+            basically the large groups of training data are sorted into .dat files
+            each different number being stored in different .dat files

@@ -1,0 +1,37 @@
+Run
+
+emcc ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/main.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/game_setup/game_setup.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/load_images.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/render_the_screen/render_the_screen.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/update_the_state_of_things/mouse_updates/update_mouse.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/clock/clock.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/update_the_state_of_things/update_the_state_of_things.c ^
+C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/update_the_state_of_things/button_management/update_buttons.c ^
+-o C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/game.html ^
+-Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result -Os ^
+-I. ^
+-I C:/raylib/raylib/src ^
+-I C:/raylib/raylib/src/external ^
+-L. ^
+-L C:/raylib/raylib/src ^
+-s USE_GLFW=3 ^
+-s ASYNCIFY ^
+-s TOTAL_MEMORY=67108864 ^
+-s FORCE_FILESYSTEM=1 ^
+--shell-file C:/raylib/raylib/src/shell.html ^
+C:/raylib/raylib/src/web/libraylib.a ^
+--preload-file C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/UI_elements@UI_elements ^
+-DPLATFORM_WEB ^
+-s EXPORTED_FUNCTIONS=["_free","_malloc","_main"] ^
+-s EXPORTED_RUNTIME_METHODS=ccall
+
+Then run:
+
+cd C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector
+python -m http.server 8080
+
+Then visit:
+
+http://localhost:8080/game.html
