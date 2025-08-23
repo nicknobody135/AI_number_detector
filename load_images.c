@@ -51,10 +51,10 @@ void load_images()
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         draw_a_number_label = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//H_line.png");
-        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        ImageResize(&temporary, temporary.width * scale, temporary.height);
         Horizontal_line = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//v_line.png");
-        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        ImageResize(&temporary, temporary.width, temporary.height * scale);
         Vertical_line = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//Current_file_name.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
