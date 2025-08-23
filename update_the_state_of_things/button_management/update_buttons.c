@@ -20,49 +20,49 @@ void update_the_buttons()
         time_the_button_was_clicked = clock();
 
         //arrow_left
-        if (mousePos.x > 122 && mousePos.x < 310 && mousePos.y > 575 && mousePos.y < 666)
+        if (mousePos.x > 122*scale && mousePos.x < 310*scale && mousePos.y > 575*scale && mousePos.y < 666*scale)
         {
             is_left_arrow_button_clicked = true;
             printf("left arrow click\n");
         }
         
         //arrow_right
-        else if (mousePos.x > 358 && mousePos.x < 546 && mousePos.y > 575 && mousePos.y < 666)
+        else if (mousePos.x > 358*scale && mousePos.x < 546*scale && mousePos.y > 575*scale && mousePos.y < 666*scale)
         {
             is_right_arrow_button_clicked = true;
             printf("right arrow click\n");
         }
 
         //delete_button
-        else if (mousePos.x > 122 && mousePos.x < 243 && mousePos.y > 164 && mousePos.y < 255)
+        else if (mousePos.x > 122*scale && mousePos.x < 243*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
         {
             is_delete_button_clicked = true;
             printf("delete button clicked\n");
         }
 
         //save_button
-        else if (mousePos.x > 273 && mousePos.x < 394 && mousePos.y > 164 && mousePos.y < 255)
+        else if (mousePos.x > 273*scale && mousePos.x < 394*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
         {
             is_save_button_clicked = true;
             printf("save button clicked\n");
         }
 
         //new_button
-        else if (mousePos.x > 425 && mousePos.x < 546 && mousePos.y > 164 && mousePos.y < 255)
+        else if (mousePos.x > 425*scale && mousePos.x < 546*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
         {
             is_new_button_clicked = true;
             printf("new button clicked\n");
         }
 
         //run_ai_button
-        else if (mousePos.x > 1088 && mousePos.x < 1512 && mousePos.y > 169 && mousePos.y < 260)
+        else if (mousePos.x > 1088*scale && mousePos.x < 1512*scale && mousePos.y > 169*scale && mousePos.y < 260*scale)
         {
             is_run_ai_button_clicked = true;
             printf("run_ai_button button clicked\n");
         }
 
         //reset_result_button
-        else if (mousePos.x > 1088 && mousePos.x < 1512 && mousePos.y > 453 && mousePos.y < 544)
+        else if (mousePos.x > 1088*scale && mousePos.x < 1512*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
         {
             is_reset_result_button_clicked = true;
             for (int a = 0; a < 36; a++)
@@ -76,7 +76,7 @@ void update_the_buttons()
         }
 
         //train_ai_button
-        else if (mousePos.x > 1088 && mousePos.x < 1512 && mousePos.y > 591 && mousePos.y < 682)
+        else if (mousePos.x > 1088*scale && mousePos.x < 1512*scale && mousePos.y > 591*scale && mousePos.y < 682*scale)
         {
             is_train_ai_button_clicked = true;
             printf("train_ai_button clicked\n");

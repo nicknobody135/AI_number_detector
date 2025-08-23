@@ -1,0 +1,36 @@
+if (is_the_mouse_really_down == true && mousePos.x > 596 && mousePos.x < 1004 && mousePos.y > 238 && mousePos.y < 850)
+    {
+        mouse_distance_between_last_frame_y = (1+(abs(mousePos.y - lastMospos.y)));
+        mouse_distance_between_last_frame_x = (1+(abs(mousePos.x - lastMospos.x)));
+        mouse_y = 0;
+        mouse_x = 0;
+        while (mouse_x <= mouse_distance_between_last_frame_x || mouse_y <= mouse_distance_between_last_frame_y)
+        {
+            if (mouse_x <= mouse_distance_between_last_frame_x)
+            {
+            mouse_x = mouse_x + 1;
+            }
+            if (mouse_y <= mouse_distance_between_last_frame_y)
+            {
+            mouse_y = mouse_y + 1;
+            }
+            
+            //printf("%d\n" , (int)mousePos.y+mouse_y);
+            for (which_row_counter = 0; which_row_counter < 36; which_row_counter++)
+            {
+                if ((int)mousePos.y+mouse_y > (238 + (which_row_counter * 17)) && (int)mousePos.y+mouse_y < (238 + (which_row_counter * 17)+17))
+                {
+                    break;
+                }
+            }
+
+            for (which_colum_counter = 0; which_colum_counter < 24; which_colum_counter++)
+            {
+                if ((int)mousePos.x+mouse_x > (596 + (which_colum_counter * 17)) && (int)mousePos.x+mouse_x < (596 + (which_colum_counter * 17)+17))
+                {
+                    break;
+                }
+            }
+            what_boxes_in_the_middle_are_on[which_row_counter][which_colum_counter] = true;
+        }
+    }

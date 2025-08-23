@@ -16,16 +16,22 @@ bool is_new_button_clicked = false;
 bool is_save_button_clicked = false;
 bool is_delete_button_clicked = false;
 bool what_boxes_in_the_middle_are_on[36][24];
+float scale;
+Vector2 mousePos;
 Vector2 lastMospos;
 
 void setup_game()
 {
-    const int screenWidth = 1600;
-    const int screenHeight = 900;
+    InitWindow(1, 1, "Dummy");
+    int monitor = GetCurrentMonitor(); // usually 0
+    int width = GetMonitorWidth(monitor);
+    scale = width/1920.0f;
+    CloseWindow();
+    printf("%f\n" , scale);
     bool ze_mouse_is_down = false;
     bool what_boxes_in_the_middle_are_on[36][24] = {0};
     int number_of_boxes_in_middle = 864;
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+    InitWindow(1600*scale, 900*scale, "raylib [core] example - basic window");
     SetTargetFPS(120);
     load_images();
 }

@@ -6,6 +6,7 @@
 
 extern const int screenWidth;
 extern const int screenHeigh;
+extern float scale;
 
 extern bool ze_mouse_is_down;
 extern bool is_the_mouse_really_down;
