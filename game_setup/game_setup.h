@@ -23,6 +23,7 @@ extern bool is_reset_result_button_clicked;
 extern bool is_new_button_clicked;
 extern bool is_save_button_clicked;
 extern bool is_delete_button_clicked;
+extern bool is_clear_screen_button_clicked;
 
 extern bool all_buttons_of_or_on;
 

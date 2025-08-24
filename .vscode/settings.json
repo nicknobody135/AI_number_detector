@@ -65,6 +65,7 @@
     "game_setup.h": "c",
     "render_the_screen.h": "c",
     "update_the_state_of_things.h": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "windows.h": "c"
   }
 }

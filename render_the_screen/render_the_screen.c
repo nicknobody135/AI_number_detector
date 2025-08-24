@@ -29,14 +29,14 @@ void render_the_screen()
         //Grid of lines in the middle
         while(v_line_counter <= 24)
         {
-            DrawTexture(Vertical_line , 596*scale + (v_line_counter*cellSize), 238*scale, BLACK);
+            DrawTexture(Vertical_line , ((int)596*scale + (v_line_counter*cellSize)), ((int)238*scale), BLACK);
             v_line_counter = v_line_counter + 1;
         }
         v_line_counter = 0;
 
         while(h_line_counter <= 36)
         {
-            DrawTexture(Horizontal_line , 596*scale, 238*scale + (h_line_counter*cellSize), BLACK);
+            DrawTexture(Horizontal_line , ((int)596*scale), ((int)238*scale) + (h_line_counter*cellSize), BLACK);
             h_line_counter = h_line_counter + 1;
         }
         h_line_counter = 0;
@@ -50,6 +50,7 @@ void render_the_screen()
         DrawTexture(run_ai_button_off , 1088*scale , 169*scale , WHITE);
         DrawTexture(reset_result_off , 1088*scale , 453*scale , WHITE);
         DrawTexture(train_ai_button_off , 1088*scale , 591*scale , WHITE);
+        DrawTexture(clear_drawing_off , 1342*scale , 453*scale , WHITE);
 
         //buttons on
         if(all_buttons_of_or_on == true)
@@ -81,6 +82,10 @@ void render_the_screen()
             else if(is_reset_result_button_clicked == true)
             {
                 DrawTexture(reset_result_on , 1088*scale , 453*scale , WHITE);
+            }
+            else if(is_clear_screen_button_clicked == true)
+            {
+                DrawTexture(clear_drawing_on , 1342*scale , 453*scale , WHITE);
             }
             else if(is_train_ai_button_clicked == true)
             {

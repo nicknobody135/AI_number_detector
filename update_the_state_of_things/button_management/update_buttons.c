@@ -62,9 +62,16 @@ void update_the_buttons()
         }
 
         //reset_result_button
-        else if (mousePos.x > 1088*scale && mousePos.x < 1512*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
+        else if (mousePos.x > 1088*scale && mousePos.x < 1258*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
         {
             is_reset_result_button_clicked = true;
+            printf("reset_result button clicked\n");
+        }
+
+        //clear_screen
+        else if (mousePos.x > 1342*scale && mousePos.x < 1512*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
+        {
+            printf("clear screen button was clicked\n");
             for (int a = 0; a < 36; a++)
             {
                 for (int b = 0; b < 24; b++)
@@ -72,7 +79,7 @@ void update_the_buttons()
                     what_boxes_in_the_middle_are_on[a][b] = false;
                 }
             }
-            printf("reset_result button clicked\n");
+            is_clear_screen_button_clicked = true;
         }
 
         //train_ai_button
@@ -104,6 +111,7 @@ void update_the_buttons()
             is_run_ai_button_clicked = false;
             is_reset_result_button_clicked = false;
             is_train_ai_button_clicked = false;
+            is_clear_screen_button_clicked = false;
         }
         
     }

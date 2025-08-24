@@ -25,7 +25,7 @@ void update_drawing()
             steps = 1;
         }
 
-        int tolerance = 10* scale;
+        int tolerance = 10*scale;
 
         for (int i = 0; i <= steps; i++) {
             int x = lastMospos.x + dx * i / steps;
@@ -34,16 +34,18 @@ void update_drawing()
             int col = (x - 596* scale) / cellSize;
             int row = (y - 238* scale) / cellSize;
 
-            for (int rr = row - 1; rr <= row + 1; rr++) {
+            for (int rr = row - 1; rr <= row + 1; rr++) 
+            {
                 if (rr < 0 || rr >= 36) continue;
 
-                int boxY = 238* scale + rr * cellSize;
-                if (y >= boxY - tolerance && y < boxY + cellSize + tolerance) {
+                int boxY = ((int)(238 * scale)) + rr * cellSize;
+                if (y >= boxY - tolerance && y < boxY + cellSize + tolerance) 
+                {
                     for (int cc = col - 1; cc <= col + 1; cc++) 
                     {
                         if (cc < 0 || cc >= 24) continue;
 
-                        int boxX = 596* scale + cc * cellSize;
+                        int boxX = (int)(596* scale) + cc * cellSize;
                         if (x >= boxX - tolerance && x < boxX + cellSize + tolerance) 
                         {
                             what_boxes_in_the_middle_are_on[rr][cc] = true;

@@ -19,6 +19,7 @@ extern Texture2D delete_button_off;
 extern Texture2D new_button_off;
 extern Texture2D save_button_off;
 extern Texture2D reset_result_off;
+extern Texture2D clear_drawing_off;
 
 
 extern Texture2D left_arrow_button_on;
@@ -29,6 +30,7 @@ extern Texture2D delete_button_on;
 extern Texture2D new_button_on;
 extern Texture2D save_button_on;
 extern Texture2D reset_result_on;
+extern Texture2D clear_drawing_on;
 void load_images();
 
 #endif

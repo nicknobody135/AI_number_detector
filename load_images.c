@@ -22,6 +22,7 @@ Texture2D delete_button_off;
 Texture2D new_button_off;
 Texture2D save_button_off;
 Texture2D reset_result_off;
+Texture2D clear_drawing_off;
 
 Texture2D left_arrow_button_on;
 Texture2D right_arrow_button_on;
@@ -31,6 +32,7 @@ Texture2D delete_button_on;
 Texture2D new_button_on;
 Texture2D save_button_on;
 Texture2D reset_result_on;
+Texture2D clear_drawing_on;
 
 void load_images()
 {
@@ -85,6 +87,9 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_off//Save.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         save_button_off = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_off//Clear_drawing.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        clear_drawing_off = LoadTextureFromImage(temporary);
 
         //Button on UI
         temporary = LoadImage("UI_elements//Button_on//arrow_left.png");
@@ -111,4 +116,7 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_on//Save.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         save_button_on = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_on//Clear_drawing.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        clear_drawing_on = LoadTextureFromImage(temporary);
 }

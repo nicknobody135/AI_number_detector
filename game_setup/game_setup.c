@@ -15,6 +15,7 @@ bool is_reset_result_button_clicked = false;
 bool is_new_button_clicked = false;
 bool is_save_button_clicked = false;
 bool is_delete_button_clicked = false;
+bool is_clear_screen_button_clicked = false;
 bool what_boxes_in_the_middle_are_on[36][24];
 float scale;
 Vector2 mousePos;
@@ -23,7 +24,7 @@ Vector2 lastMospos;
 void setup_game()
 {
     InitWindow(1, 1, "Dummy");
-    int monitor = GetCurrentMonitor(); // usually 0
+    int monitor = GetCurrentMonitor();
     int width = GetMonitorWidth(monitor);
     scale = width/1920.0f;
     CloseWindow();
