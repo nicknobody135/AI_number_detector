@@ -17,11 +17,11 @@ void render_the_screen()
         //static UI or labels:
         DrawTexture(background_for_the_boxes_to_draw_on, 596*scale, 238*scale, WHITE);
         DrawTexture(heading, 588*scale, 24*scale, WHITE);
-        DrawTexture(choose_files_drop_down , 122*scale, 368*scale, WHITE);
+        DrawTexture(choose_files_drop_down_box , 122*scale, 368*scale, WHITE);
         DrawTexture(choose_files_label , 122*scale , 285*scale , WHITE);
         DrawTexture(draw_a_number_label , 596*scale , 191*scale , WHITE);
-        DrawTexture(choose_files_drop_down , 1088*scale , 252*scale , WHITE);
-        DrawTexture(choose_files_drop_down , 1088*scale , 674*scale , WHITE);
+        DrawTexture(drop_down_box , 1088*scale , 252*scale , WHITE);
+        DrawTexture(drop_down_box , 1088*scale , 674*scale , WHITE);
         DrawTexture(What_is_the_name_of_the_file , 122*scale , 716*scale , WHITE);
         DrawTexture(What_is_the_name_of_the_file , 350*scale , 716*scale , WHITE);
 
@@ -104,5 +104,8 @@ void render_the_screen()
                 }
             }
         }
+
+        //font render
+         DrawTextEx(display_font , drawing_files[0] , (Vector2){ 50, 50 }, 40, 2, BLACK);
     }
 }

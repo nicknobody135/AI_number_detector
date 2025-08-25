@@ -27,3 +27,5 @@ additional functions:
         handle the files:
             basically the large groups of training data are sorted into .dat files
             each different number being stored in different .dat files
+        File selector:
+            up and down buttons are 32x23 and located at 490x400 and 490x483

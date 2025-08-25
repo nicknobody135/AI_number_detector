@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <windows.h>
 
-int main() {
-    WIN32_FIND_DATA fd;
-    HANDLE h = FindFirstFile("extras\\*.*", &fd);
-    while(1) 
-    {
-        printf("%s\n", fd.cFileName);
-        if (FindNextFile(h, &fd) == 0)
-        {
-            break;
-        }
+int main(void) 
+{
+    char fruits[3][20];
+
+    // Modify one string
+    sprintf(fruits[1], "Blueberry");
+
+    for (int i = 0; i < sizeof(fruits)/20;i++) {
+        printf("%s\n", fruits[i]);
     }
+    printf("%d\n" , sizeof(fruits)/20);
+
     return 0;
 }

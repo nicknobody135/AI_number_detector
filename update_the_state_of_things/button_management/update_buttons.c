@@ -88,6 +88,20 @@ void update_the_buttons()
             is_train_ai_button_clicked = true;
             printf("train_ai_button clicked\n");
         }
+        
+        //file_selector_up
+        else if (mousePos.x > 490*scale && mousePos.x < 522*scale && mousePos.y > 400*scale && mousePos.y < 423*scale)
+        {
+            is_file_selector_up_clicked = true;
+            printf("file selector up button clicked\n");
+        }
+
+        //file_selector_down
+        else if (mousePos.x > 490*scale && mousePos.x < 522*scale && mousePos.y > 483*scale && mousePos.y < 505*scale)
+        {
+            is_file_selector_down_clicked = true;
+            printf("file selector down button clicked\n");
+        }
     }
 
     else
@@ -112,6 +126,8 @@ void update_the_buttons()
             is_reset_result_button_clicked = false;
             is_train_ai_button_clicked = false;
             is_clear_screen_button_clicked = false;
+            is_file_selector_down_clicked = false;
+            is_file_selector_up_clicked = false;
         }
         
     }

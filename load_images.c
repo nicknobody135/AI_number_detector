@@ -7,7 +7,8 @@
 Image temporary;
 Texture2D heading;
 Texture2D background_for_the_boxes_to_draw_on;
-Texture2D choose_files_drop_down;
+Texture2D drop_down_box;
+Texture2D choose_files_drop_down_box;
 Texture2D choose_files_label;
 Texture2D draw_a_number_label;
 Texture2D Horizontal_line;
@@ -23,6 +24,8 @@ Texture2D new_button_off;
 Texture2D save_button_off;
 Texture2D reset_result_off;
 Texture2D clear_drawing_off;
+Texture2D file_selector_up_off;
+Texture2D file_selector_down_off;
 
 Texture2D left_arrow_button_on;
 Texture2D right_arrow_button_on;
@@ -33,6 +36,8 @@ Texture2D new_button_on;
 Texture2D save_button_on;
 Texture2D reset_result_on;
 Texture2D clear_drawing_on;
+Texture2D file_selector_up_on;
+Texture2D file_selector_down_on;
 
 void load_images()
 {
@@ -45,7 +50,7 @@ void load_images()
         background_for_the_boxes_to_draw_on = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//Choose_files_drop_down.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
-        choose_files_drop_down = LoadTextureFromImage(temporary);
+        drop_down_box = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//ChooseFiles.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         choose_files_label = LoadTextureFromImage(temporary);
@@ -61,6 +66,10 @@ void load_images()
         temporary = LoadImage("UI_elements//Current_file_name.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         What_is_the_name_of_the_file = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//real_choose_files_dropdown.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        choose_files_drop_down_box = LoadTextureFromImage(temporary);
+
 
         //Button off UI
         temporary = LoadImage("UI_elements//Button_off//arrow_left.png");
@@ -90,6 +99,12 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_off//Clear_drawing.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         clear_drawing_off = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_off//file_selector_down.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        file_selector_down_off = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_off//file_selector_up.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        file_selector_up_off = LoadTextureFromImage(temporary);
 
         //Button on UI
         temporary = LoadImage("UI_elements//Button_on//arrow_left.png");
@@ -119,4 +134,10 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_on//Clear_drawing.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         clear_drawing_on = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_on//file_selector_down.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        file_selector_down_on = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_on//file_selector_up.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        file_selector_up_on = LoadTextureFromImage(temporary);
 }
