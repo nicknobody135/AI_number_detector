@@ -1,7 +1,7 @@
 #ifndef SETUP_GAME
 #define SETUP_GAME
 #include "C:\raylib\raylib\src\raylib.h"
-#include "C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/load_images.h"
+#include "../load_images.h"
 #include <time.h>
 #include <string.h>
 
@@ -33,6 +33,7 @@ extern bool is_delete_button_clicked;
 extern bool is_clear_screen_button_clicked;
 extern bool is_file_selector_up_clicked;
 extern bool is_file_selector_down_clicked;
+extern bool is_which_file_is_selected_clicked[4];
 extern bool all_buttons_of_or_on;
 
 //time between each button click

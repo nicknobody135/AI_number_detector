@@ -1,9 +1,9 @@
 #include "C:\raylib\raylib\src\raylib.h"
 #include "stdlib.h"
 #include "stdio.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\game_setup\game_setup.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\clock\clock.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\update_the_state_of_things\button_management\update_buttons.h"
+#include "../game_setup/game_setup.h"
+#include "../clock/clock.h"
+#include "../update_the_state_of_things/button_management/update_buttons.h"
 
 int h_line_counter = 0;
 int v_line_counter = 0;
@@ -51,6 +51,8 @@ void render_the_screen()
         DrawTexture(reset_result_off , 1088*scale , 453*scale , WHITE);
         DrawTexture(train_ai_button_off , 1088*scale , 591*scale , WHITE);
         DrawTexture(clear_drawing_off , 1342*scale , 453*scale , WHITE);
+        DrawTexture(file_selector_up_off , 490*scale , 400*scale , WHITE);
+        DrawTexture(file_selector_down_off , 490*scale , 483*scale , WHITE);
 
         //buttons on
         if(all_buttons_of_or_on == true)
@@ -91,6 +93,14 @@ void render_the_screen()
             {
                 DrawTexture(train_ai_button_on , 1088*scale , 591*scale , WHITE);
             }
+            else if(is_file_selector_up_clicked == true)
+            {
+                DrawTexture(file_selector_up_on , 490*scale , 400*scale , WHITE);
+            }
+            else if(is_file_selector_down_clicked == true)
+            {
+                DrawTexture(file_selector_down_on , 490*scale , 483*scale , WHITE);
+            }
         }
         
         //render_the_boxes_in_the_middle
@@ -100,12 +110,9 @@ void render_the_screen()
             {
                 if (what_boxes_in_the_middle_are_on[a][b] == true)
                 {
-                    DrawRectangle((596*scale) + ((17*scale) * b), (238*scale) + ((17*scale) * a), (17*scale), (17*scale), BLACK);
+                    DrawRectangle((596*scale) + ((cellSize) * b) , (238*scale) + ((cellSize) * a),cellSize , cellSize, BLACK);
                 }
             }
         }
-
-        //font render
-         DrawTextEx(display_font , drawing_files[0] , (Vector2){ 50, 50 }, 40, 2, BLACK);
     }
 }

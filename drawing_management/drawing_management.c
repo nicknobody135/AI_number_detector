@@ -1,7 +1,7 @@
 #include "C:\raylib\raylib\src\raylib.h"
 #include "stdlib.h"
 #include "stdio.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\game_setup\game_setup.h"
+#include "../game_setup/game_setup.h"
 #include "math.h"
 
 int which_colum_counter = 0;

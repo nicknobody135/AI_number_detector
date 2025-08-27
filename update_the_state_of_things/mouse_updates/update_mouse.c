@@ -2,7 +2,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "update_mouse.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\game_setup\game_setup.h"
+#include "..\..\game_setup\game_setup.h"
 
 
 void update_mouse_details()

@@ -1,7 +1,7 @@
 #include "C:\raylib\raylib\src\raylib.h"
 #include "stdlib.h"
 #include "stdio.h"
-#include "C:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/load_images.h"
+#include "../load_images.h"
 #include <string.h>
 
 const int screenWidth;
@@ -19,6 +19,7 @@ bool is_delete_button_clicked = false;
 bool is_clear_screen_button_clicked = false;
 bool is_file_selector_up_clicked = false;
 bool is_file_selector_down_clicked = false;
+bool is_which_file_is_selected_clicked[4] = {0 , 0 , 0 , 0};
 bool what_boxes_in_the_middle_are_on[36][24];
 float scale;
 Vector2 mousePos;
@@ -44,7 +45,7 @@ void setup_game()
     int number_of_boxes_in_middle = 864;
 
     //window set up
-    InitWindow(1600*scale, 900*scale, "raylib [core] example - basic window");
+    InitWindow(1600*scale, 900*scale, "AI number detector");
     SetTargetFPS(60);
 
     load_images();
@@ -65,6 +66,6 @@ void setup_game()
     }
 
     //font
-    display_font = LoadFontEx("C:\\Users\\Lenovo\\Desktop\\Coding\\c_and_cpp\\c\\medium_projects\\AI_number_detector\\UI_elements\\arial.ttf" , 64 , 0 , 250);
-    
+    display_font = LoadFontEx("UI_elements\\arial.ttf" , 64 , 0 , 250);
+
 }

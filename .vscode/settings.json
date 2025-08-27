@@ -55,17 +55,5 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "files.associations": {
-    "*.exe": "code-text-binary",
-    "load_images.h": "c",
-    "stdlib.h": "c",
-    "stdio.h": "c",
-    "update_mouse.h": "c",
-    "game_setup.h": "c",
-    "render_the_screen.h": "c",
-    "update_the_state_of_things.h": "c",
-    "time.h": "c",
-    "windows.h": "c"
-  }
+  "C_Cpp_Runner.msvcSecureNoWarnings": false
 }

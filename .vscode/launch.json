@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_dectector",
-      "program": "c:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_dectector/build/Debug/outDebug",
+      "cwd": "c:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector",
+      "program": "c:/Users/Lenovo/Desktop/Coding/c_and_cpp/c/medium_projects/AI_number_detector/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -29,3 +29,4 @@ additional functions:
             each different number being stored in different .dat files
         File selector:
             up and down buttons are 32x23 and located at 490x400 and 490x483
+            the selected box should be 333x21 pixels (two 18, two nineteen ) and should be at 146x400

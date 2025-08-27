@@ -1,8 +1,8 @@
 #include "C:\raylib\raylib\src\raylib.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\update_the_state_of_things\update_the_state_of_things.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\update_the_state_of_things\mouse_updates\update_mouse.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\game_setup\game_setup.h"
-#include "C:\Users\Lenovo\Desktop\Coding\c_and_cpp\c\medium_projects\AI_number_detector\clock\clock.h"
+#include "../update_the_state_of_things.h"
+#include "../mouse_updates/update_mouse.h"
+#include "../../game_setup/game_setup.h"
+#include "../../clock/clock.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -13,8 +13,11 @@ int time_game_has_been_running_for;
 
 void update_the_buttons()
 {
-    if(ze_mouse_is_down == true)
+    time_right_now = clock();
+    double time_elapsed = (double)(time_right_now - time_the_button_was_clicked) / CLOCKS_PER_SEC;
+    if(ze_mouse_is_down == true && time_elapsed > 0.5)
     {
+        
         all_buttons_of_or_on = true;
         //saves the time the button was clicked so the button can turn orange for a bit
         time_the_button_was_clicked = clock();
@@ -102,12 +105,47 @@ void update_the_buttons()
             is_file_selector_down_clicked = true;
             printf("file selector down button clicked\n");
         }
+    
+        //file_selector
+        else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 400*scale && mousePos.y < 506*scale)
+        {
+            if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 400*scale && mousePos.y < 426*scale)
+            {
+                is_which_file_is_selected_clicked[0] = 1;
+                is_which_file_is_selected_clicked[1] = 0;
+                is_which_file_is_selected_clicked[2] = 0;
+                is_which_file_is_selected_clicked[3] = 0;
+                printf("file selector 1 clicked\n");
+            }
+            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 427*scale && mousePos.y < 452*scale)
+            {
+                is_which_file_is_selected_clicked[0] = 0;
+                is_which_file_is_selected_clicked[1] = 1;
+                is_which_file_is_selected_clicked[2] = 0;
+                is_which_file_is_selected_clicked[3] = 0;
+                printf("file selector 2 clicked\n");
+            }
+            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 453*scale && mousePos.y < 479*scale)
+            {
+                is_which_file_is_selected_clicked[0] = 0;
+                is_which_file_is_selected_clicked[1] = 0;
+                is_which_file_is_selected_clicked[2] = 1;
+                is_which_file_is_selected_clicked[3] = 0;
+                printf("file selector 3 clicked\n");
+            }
+            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 480*scale && mousePos.y < 506*scale)
+            {
+                is_which_file_is_selected_clicked[0] = 0;
+                is_which_file_is_selected_clicked[1] = 0;
+                is_which_file_is_selected_clicked[2] = 0;
+                is_which_file_is_selected_clicked[3] = 1;
+                printf("file selector 4 clicked\n");
+            }
+        }
     }
 
     else
     {
-        time_right_now = clock();
-        double time_elapsed = (double)(time_right_now - time_the_button_was_clicked) / CLOCKS_PER_SEC;
         if (time_elapsed <= 0.3)
         {
             all_buttons_of_or_on = true;
