@@ -3,6 +3,7 @@
 #include "../mouse_updates/update_mouse.h"
 #include "../../game_setup/game_setup.h"
 #include "../../clock/clock.h"
+#include "../../file_management/update_the_files.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -15,7 +16,7 @@ void update_the_buttons()
 {
     time_right_now = clock();
     double time_elapsed = (double)(time_right_now - time_the_button_was_clicked) / CLOCKS_PER_SEC;
-    if(ze_mouse_is_down == true && time_elapsed > 0.5)
+    if(ze_mouse_is_down == true && time_elapsed > 0.2)
     {
         
         all_buttons_of_or_on = true;
@@ -75,13 +76,7 @@ void update_the_buttons()
         else if (mousePos.x > 1342*scale && mousePos.x < 1512*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
         {
             printf("clear screen button was clicked\n");
-            for (int a = 0; a < 36; a++)
-            {
-                for (int b = 0; b < 24; b++)
-                {
-                    what_boxes_in_the_middle_are_on[a][b] = false;
-                }
-            }
+            clean_the_screen();
             is_clear_screen_button_clicked = true;
         }
 
@@ -97,6 +92,10 @@ void update_the_buttons()
         {
             is_file_selector_up_clicked = true;
             printf("file selector up button clicked\n");
+            if (top_file_n!= 0)
+            {
+                top_file_n = top_file_n - 1;
+            }
         }
 
         //file_selector_down
@@ -104,42 +103,86 @@ void update_the_buttons()
         {
             is_file_selector_down_clicked = true;
             printf("file selector down button clicked\n");
+            if (top_file_n+4 != temp_len)
+            {
+                top_file_n = top_file_n + 1;
+            }
         }
     
         //file_selector
-        else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 400*scale && mousePos.y < 506*scale)
+        else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 400*scale && mousePos.y < 513*scale)
         {
-            if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 400*scale && mousePos.y < 426*scale)
+            if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 400*scale && mousePos.y < 426*scale)
             {
-                is_which_file_is_selected_clicked[0] = 1;
-                is_which_file_is_selected_clicked[1] = 0;
-                is_which_file_is_selected_clicked[2] = 0;
-                is_which_file_is_selected_clicked[3] = 0;
-                printf("file selector 1 clicked\n");
+                if (is_which_file_is_selected_clicked[0+top_file_n] == 1)
+                {
+                    is_which_file_is_selected_clicked[0+top_file_n] = 0;
+                    clean_the_screen();
+                }
+                
+                else if (is_which_file_is_selected_clicked[0+top_file_n] == 0)
+                {
+                    clean_the_screen();
+                    for (int i = 0 ; i < temp_len ; i++)
+                    {
+                        is_which_file_is_selected_clicked[i] = 0;
+                    }
+                    is_which_file_is_selected_clicked[0+top_file_n] = 1;
+                }
             }
-            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 427*scale && mousePos.y < 452*scale)
+            else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 429*scale && mousePos.y < 455*scale)
             {
-                is_which_file_is_selected_clicked[0] = 0;
-                is_which_file_is_selected_clicked[1] = 1;
-                is_which_file_is_selected_clicked[2] = 0;
-                is_which_file_is_selected_clicked[3] = 0;
-                printf("file selector 2 clicked\n");
+                if (is_which_file_is_selected_clicked[1+top_file_n] == 1)
+                {
+                    is_which_file_is_selected_clicked[1+top_file_n] = 0;
+                    clean_the_screen();
+                }
+                
+                else if (is_which_file_is_selected_clicked[1+top_file_n] == 0)
+                {
+                    for (int i = 0 ; i < temp_len ; i++)
+                    {
+                        is_which_file_is_selected_clicked[i] = 0;
+                    }
+                    is_which_file_is_selected_clicked[1+top_file_n] = 1;
+                    clean_the_screen();
+                }
             }
-            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 453*scale && mousePos.y < 479*scale)
+            else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 458*scale && mousePos.y < 484*scale)
             {
-                is_which_file_is_selected_clicked[0] = 0;
-                is_which_file_is_selected_clicked[1] = 0;
-                is_which_file_is_selected_clicked[2] = 1;
-                is_which_file_is_selected_clicked[3] = 0;
-                printf("file selector 3 clicked\n");
+                if (is_which_file_is_selected_clicked[2+top_file_n] == 1)
+                {
+                    is_which_file_is_selected_clicked[2+top_file_n] = 0;
+                    clean_the_screen();
+                }
+                
+                else if (is_which_file_is_selected_clicked[2+top_file_n] == 0)
+                {
+                    for (int i = 0 ; i < temp_len ; i++)
+                    {
+                        is_which_file_is_selected_clicked[i] = 0;
+                    }
+                    is_which_file_is_selected_clicked[2+top_file_n] = 1;
+                    clean_the_screen();
+                }
             }
-            else if (mousePos.x > 146*scale && mousePos.x < 479*scale && mousePos.y > 480*scale && mousePos.y < 506*scale)
+            else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 487*scale && mousePos.y < 513*scale)
             {
-                is_which_file_is_selected_clicked[0] = 0;
-                is_which_file_is_selected_clicked[1] = 0;
-                is_which_file_is_selected_clicked[2] = 0;
-                is_which_file_is_selected_clicked[3] = 1;
-                printf("file selector 4 clicked\n");
+                if (is_which_file_is_selected_clicked[3+top_file_n] == 1)
+                {
+                    is_which_file_is_selected_clicked[3+top_file_n] = 0;
+                    clean_the_screen();
+                }
+                
+                else if (is_which_file_is_selected_clicked[3+top_file_n] == 0)
+                {
+                    for (int i = 0 ; i < temp_len ; i++)
+                    {
+                        is_which_file_is_selected_clicked[i] = 0;
+                    }
+                    is_which_file_is_selected_clicked[3+top_file_n] = 1;
+                    clean_the_screen();
+                }
             }
         }
     }

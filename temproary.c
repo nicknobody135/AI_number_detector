@@ -1,17 +1,5 @@
-#include <stdio.h>
-#include <windows.h>
-
-int main(void) 
-{
-    char fruits[3][20];
-
-    // Modify one string
-    sprintf(fruits[1], "Blueberry");
-
-    for (int i = 0; i < sizeof(fruits)/20;i++) {
-        printf("%s\n", fruits[i]);
-    }
-    printf("%d\n" , sizeof(fruits)/20);
-
-    return 0;
-}
+//  Problems/things to add:
+//  1)Add a system that detects the number of drawings in a file and stores them
+//  2)Make the save button work for different files
+//  3)Make the left and right arrows change number shown on the screen
+//  4)

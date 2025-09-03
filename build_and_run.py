@@ -11,6 +11,7 @@ cmd = (
     'update_the_state_of_things\\update_the_state_of_things.c '
     'update_the_state_of_things\\button_management\\update_buttons.c '
     'drawing_management\\drawing_management.c '
+    'file_management\\update_the_files.c '
     '-o main.exe '
     '-I"C:\\raylib\\raylib_desktop\\src" '
     'extras\\libraylib.a '
@@ -18,4 +19,3 @@ cmd = (
 )
 subprocess.run(cmd)
 subprocess.run("main.exe")
-#364

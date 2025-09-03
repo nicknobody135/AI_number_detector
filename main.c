@@ -6,6 +6,7 @@
 #include "update_the_state_of_things\update_the_state_of_things.h"
 #include "clock\clock.h"
 #include "drawing_management\drawing_management.h"
+#include "file_management/update_the_files.h"
 int main()
 {
     setup_game();   //inisilizes all the variables and window settings
@@ -15,8 +16,10 @@ int main()
         BeginDrawing();     //idk just part of the libary for some reason
         update_the_state_of_things();     //updates the mouse location and button states
         update_drawing();
+        if (game_clock%3 == 0)update_files();
         render_the_screen();
         EndDrawing();
+        //printf("%s\n", txt_files_for_drawing_display[0]);
     }
     CloseWindow();
     return 0;

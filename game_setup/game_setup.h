@@ -17,7 +17,6 @@ extern Vector2 mousePos;
 extern Vector2 lastMospos;
 
 //app clock
-extern int clock_main;
 extern int game_clock;
 extern int time_game_has_been_running_for;
 
@@ -33,23 +32,27 @@ extern bool is_delete_button_clicked;
 extern bool is_clear_screen_button_clicked;
 extern bool is_file_selector_up_clicked;
 extern bool is_file_selector_down_clicked;
-extern bool is_which_file_is_selected_clicked[4];
+extern bool *is_which_file_is_selected_clicked;
 extern bool all_buttons_of_or_on;
 
 //time between each button click
 extern clock_t time_the_button_was_clicked;
 extern clock_t time_right_now;
 
-//grid in the middle
+//drawing
 extern bool what_boxes_in_the_middle_are_on[36][24];
 extern int number_of_boxes_in_middle;
+extern bool clear_the_screen;
 
 //file related
 extern FilePathList files;
 extern char **drawing_files;
 extern int drawing_files_lenght;
-
+extern char what_files_to_show[4][30];
+extern int top_file_n;
+extern int temp_len;
 //font
 extern Font display_font;
 void setup_game();
+int count_slash_ns(char *string_to_count);
 #endif

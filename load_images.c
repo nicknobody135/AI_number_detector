@@ -14,6 +14,7 @@ Texture2D draw_a_number_label;
 Texture2D Horizontal_line;
 Texture2D Vertical_line;
 Texture2D What_is_the_name_of_the_file;
+Texture2D four_files_names;
 
 Texture2D left_arrow_button_off;
 Texture2D right_arrow_button_off;
@@ -38,6 +39,7 @@ Texture2D reset_result_on;
 Texture2D clear_drawing_on;
 Texture2D file_selector_up_on;
 Texture2D file_selector_down_on;
+Texture2D selected_file_on;
 
 void load_images()
 {
@@ -69,6 +71,9 @@ void load_images()
         temporary = LoadImage("UI_elements//real_choose_files_dropdown.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         choose_files_drop_down_box = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//file_selector_static.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        four_files_names = LoadTextureFromImage(temporary);
 
 
         //Button off UI
@@ -116,7 +121,7 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_on//Run_ai.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         run_ai_button_on = LoadTextureFromImage(temporary);
-        temporary = LoadImage("UI_elements//Button_on//reset_result.png");
+        temporary = LoadImage("UI_elements//Button_on//Reset_Result.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         reset_result_on = LoadTextureFromImage(temporary);
         temporary = LoadImage("UI_elements//Button_on//Train_ai.png");
@@ -140,4 +145,7 @@ void load_images()
         temporary = LoadImage("UI_elements//Button_on//file_selector_up.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
         file_selector_up_on = LoadTextureFromImage(temporary);
+        temporary = LoadImage("UI_elements//Button_on//selected_file.png");
+        ImageResize(&temporary, temporary.width * scale, temporary.height * scale);
+        selected_file_on = LoadTextureFromImage(temporary);
 }

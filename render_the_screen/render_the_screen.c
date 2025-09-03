@@ -4,6 +4,7 @@
 #include "../game_setup/game_setup.h"
 #include "../clock/clock.h"
 #include "../update_the_state_of_things/button_management/update_buttons.h"
+#include "string.h"
 
 int h_line_counter = 0;
 int v_line_counter = 0;
@@ -24,6 +25,7 @@ void render_the_screen()
         DrawTexture(drop_down_box , 1088*scale , 674*scale , WHITE);
         DrawTexture(What_is_the_name_of_the_file , 122*scale , 716*scale , WHITE);
         DrawTexture(What_is_the_name_of_the_file , 350*scale , 716*scale , WHITE);
+        DrawTexture(four_files_names , 145*scale , 400*scale , WHITE);
 
         int cellSize = (int)(17 * scale);
         //Grid of lines in the middle
@@ -83,6 +85,7 @@ void render_the_screen()
             }
             else if(is_reset_result_button_clicked == true)
             {
+                printf("hello\n");
                 DrawTexture(reset_result_on , 1088*scale , 453*scale , WHITE);
             }
             else if(is_clear_screen_button_clicked == true)
@@ -112,6 +115,40 @@ void render_the_screen()
                 {
                     DrawRectangle((596*scale) + ((cellSize) * b) , (238*scale) + ((cellSize) * a),cellSize , cellSize, BLACK);
                 }
+            }
+        }
+    
+        //render the file selector
+        if (is_which_file_is_selected_clicked[0+top_file_n] == 1)
+        {
+            DrawTexture(selected_file_on , 145*scale , 400*scale , WHITE);
+        }
+        else if (is_which_file_is_selected_clicked[1+top_file_n] == 1)
+        {
+            DrawTexture(selected_file_on , 145*scale , 429*scale , WHITE);
+        }
+        else if (is_which_file_is_selected_clicked[2+top_file_n] == 1)
+        {
+            DrawTexture(selected_file_on , 145*scale , 458*scale , WHITE);
+        }
+        else if (is_which_file_is_selected_clicked[3+top_file_n] == 1)
+        {
+            DrawTexture(selected_file_on , 145*scale , 487*scale , WHITE);
+        }
+
+        //file font names:
+        DrawTextEx(display_font , what_files_to_show[0] , (Vector2){ 155*scale, 405*scale}, 20*scale, 2, BLACK);
+        DrawTextEx(display_font , what_files_to_show[1] , (Vector2){ 155*scale, 434*scale}, 20*scale, 2, BLACK);
+        DrawTextEx(display_font , what_files_to_show[2] , (Vector2){ 155*scale, 462*scale}, 20*scale, 2, BLACK);
+        DrawTextEx(display_font , what_files_to_show[3] , (Vector2){ 155*scale, 491*scale}, 20*scale, 2, BLACK);
+        for (int i = 0 ; i < temp_len ; i++)
+        {
+            if (is_which_file_is_selected_clicked[i] == 1)
+            {
+                char filename[100];
+                strcpy(filename, "File selected : \n");
+                strcat(filename, drawing_files[i]);
+                DrawTextEx(display_font , filename , (Vector2){132*scale , 740*scale}, 25*scale, 2, BLACK);
             }
         }
     }

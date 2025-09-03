@@ -11,6 +11,7 @@ extern Texture2D draw_a_number_label;
 extern Texture2D Horizontal_line;
 extern Texture2D Vertical_line;
 extern Texture2D What_is_the_name_of_the_file;
+extern Texture2D four_files_names;
 
 extern Texture2D left_arrow_button_off;
 extern Texture2D right_arrow_button_off;
@@ -35,6 +36,8 @@ extern Texture2D reset_result_on;
 extern Texture2D clear_drawing_on;
 extern Texture2D file_selector_up_on;
 extern Texture2D file_selector_down_on;
+extern Texture2D selected_file_on;
+
 void load_images();
 
 #endif
