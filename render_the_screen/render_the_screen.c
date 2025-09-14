@@ -24,7 +24,7 @@ void render_the_screen()
         DrawTexture(drop_down_box , 1088*scale , 252*scale , WHITE);
         DrawTexture(drop_down_box , 1088*scale , 674*scale , WHITE);
         DrawTexture(What_is_the_name_of_the_file , 122*scale , 716*scale , WHITE);
-        DrawTexture(What_is_the_name_of_the_file , 350*scale , 716*scale , WHITE);
+        DrawTexture(What_is_the_name_of_the_file , 358*scale , 716*scale , WHITE);
         DrawTexture(four_files_names , 145*scale , 400*scale , WHITE);
 
         int cellSize = (int)(17 * scale);
@@ -85,7 +85,6 @@ void render_the_screen()
             }
             else if(is_reset_result_button_clicked == true)
             {
-                printf("hello\n");
                 DrawTexture(reset_result_on , 1088*scale , 453*scale , WHITE);
             }
             else if(is_clear_screen_button_clicked == true)
@@ -148,7 +147,23 @@ void render_the_screen()
                 char filename[100];
                 strcpy(filename, "File selected : \n");
                 strcat(filename, drawing_files[i]);
-                DrawTextEx(display_font , filename , (Vector2){132*scale , 740*scale}, 25*scale, 2, BLACK);
+                DrawTextEx(display_font , filename , (Vector2){132*scale , 740*scale}, 20*scale, 2, BLACK);
+            }
+
+            for (int j = 0; j < how_many_drawings_in_each_file[i]; j++)
+            {
+                if(which_drawing_among_the_files_is_the_user_on[i][j] == true)
+                {
+                    char filename[100];
+                    strcpy(filename, "Drawing selected : \n");
+                    char buffer[20];
+                    snprintf(buffer, sizeof(buffer), "%d", j + 1);
+                    strcat(filename, buffer);
+                    strcat(filename , "/");
+                    snprintf(buffer, sizeof(buffer), "%d", how_many_drawings_in_each_file[i]);
+                    strcat(filename, buffer);
+                    DrawTextEx(display_font , filename , (Vector2){360*scale , 740*scale}, 20*scale, 2, BLACK);
+                }
             }
         }
     }

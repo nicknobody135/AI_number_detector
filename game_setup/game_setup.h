@@ -51,8 +51,11 @@ extern int drawing_files_lenght;
 extern char what_files_to_show[4][30];
 extern int top_file_n;
 extern int temp_len;
+extern char **contents_of_training_data_files; 
+extern int *how_many_drawings_in_each_file;
+extern bool **which_drawing_among_the_files_is_the_user_on;
+
 //font
 extern Font display_font;
 void setup_game();
-int count_slash_ns(char *string_to_count);
 #endif

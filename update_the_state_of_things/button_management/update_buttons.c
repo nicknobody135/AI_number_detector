@@ -28,6 +28,45 @@ void update_the_buttons()
         {
             is_left_arrow_button_clicked = true;
             printf("left arrow click\n");
+            int which_file = -1;
+            for (int i = 0; i < temp_len; i++)
+            {
+                if (is_which_file_is_selected_clicked[i] == 1)
+                {
+                    which_file = i;
+                    break;
+                }
+            }
+            int current_drawing_in_file = -1;
+
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                if (current_drawing_in_file != 0)
+                {
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[which_file][current_drawing_in_file - 1] = true;
+                }
+            }
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                load_a_new_drawing_to_the_screen(which_file , current_drawing_in_file);
+            }
         }
         
         //arrow_right
@@ -35,6 +74,45 @@ void update_the_buttons()
         {
             is_right_arrow_button_clicked = true;
             printf("right arrow click\n");
+            int which_file = -1;
+            for (int i = 0; i < temp_len; i++)
+            {
+                if (is_which_file_is_selected_clicked[i] == 1)
+                {
+                    which_file = i;
+                }
+            }
+
+            int current_drawing_in_file = -1;
+
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                }
+            }
+
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                if (current_drawing_in_file != how_many_drawings_in_each_file[which_file] - 1)
+                {
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[which_file][current_drawing_in_file + 1] = true;
+                }
+            }
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                load_a_new_drawing_to_the_screen(which_file , current_drawing_in_file);
+            }
         }
 
         //delete_button
@@ -42,6 +120,31 @@ void update_the_buttons()
         {
             is_delete_button_clicked = true;
             printf("delete button clicked\n");
+            int which_file = -1;
+            for (int i = 0; i < temp_len; i++)
+            {
+                if (is_which_file_is_selected_clicked[i] == 1)
+                {
+                    which_file = i;
+                    break;
+                }
+            }
+            int current_drawing_in_file = -1;
+
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1 && how_many_drawings_in_each_file[which_file] > 1)
+            {
+                
+                printf("hello\n");
+                delete_a_drawing(which_file , current_drawing_in_file);
+            }
         }
 
         //save_button
@@ -49,6 +152,31 @@ void update_the_buttons()
         {
             is_save_button_clicked = true;
             printf("save button clicked\n");
+            int which_file = -1;
+            for (int i = 0; i < temp_len; i++)
+            {
+                if (is_which_file_is_selected_clicked[i] == 1)
+                {
+                    which_file = i;
+                    break;
+                }
+            }
+            int current_drawing_in_file = -1;
+
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                
+                printf("hello\n");
+                save_to_file(which_file , current_drawing_in_file);
+            }
         }
 
         //new_button
@@ -56,6 +184,29 @@ void update_the_buttons()
         {
             is_new_button_clicked = true;
             printf("new button clicked\n");
+            int which_file = -1;
+            for (int i = 0; i < temp_len; i++)
+            {
+                if (is_which_file_is_selected_clicked[i] == 1)
+                {
+                    which_file = i;
+                    break;
+                }
+            }
+            int current_drawing_in_file = -1;
+
+            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+            {
+                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+                {
+                    current_drawing_in_file = i;
+                    break;
+                }
+            }
+            if (which_file != -1 && current_drawing_in_file != -1)
+            {
+                create_a_new_file(which_file , current_drawing_in_file);
+            }
         }
 
         //run_ai_button
@@ -118,6 +269,7 @@ void update_the_buttons()
                 {
                     is_which_file_is_selected_clicked[0+top_file_n] = 0;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
                 }
                 
                 else if (is_which_file_is_selected_clicked[0+top_file_n] == 0)
@@ -128,6 +280,15 @@ void update_the_buttons()
                         is_which_file_is_selected_clicked[i] = 0;
                     }
                     is_which_file_is_selected_clicked[0+top_file_n] = 1;
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[0+top_file_n][0] = true;
+                    for (int i = 0 ; i < how_many_drawings_in_each_file[0+top_file_n] ; i++)
+                    {
+                        if (which_drawing_among_the_files_is_the_user_on[0+top_file_n][i] == true)
+                        {
+                            load_a_new_drawing_to_the_screen(0+top_file_n , i);
+                        }
+                    }
                 }
             }
             else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 429*scale && mousePos.y < 455*scale)
@@ -136,6 +297,7 @@ void update_the_buttons()
                 {
                     is_which_file_is_selected_clicked[1+top_file_n] = 0;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
                 }
                 
                 else if (is_which_file_is_selected_clicked[1+top_file_n] == 0)
@@ -146,6 +308,15 @@ void update_the_buttons()
                     }
                     is_which_file_is_selected_clicked[1+top_file_n] = 1;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[1+top_file_n][0] = true;
+                    for (int i = 0 ; i < how_many_drawings_in_each_file[1+top_file_n] ; i++)
+                    {
+                        if (which_drawing_among_the_files_is_the_user_on[1+top_file_n][i] == true)
+                        {
+                            load_a_new_drawing_to_the_screen(1+top_file_n , i);
+                        }
+                    }
                 }
             }
             else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 458*scale && mousePos.y < 484*scale)
@@ -154,6 +325,7 @@ void update_the_buttons()
                 {
                     is_which_file_is_selected_clicked[2+top_file_n] = 0;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
                 }
                 
                 else if (is_which_file_is_selected_clicked[2+top_file_n] == 0)
@@ -164,6 +336,15 @@ void update_the_buttons()
                     }
                     is_which_file_is_selected_clicked[2+top_file_n] = 1;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[2+top_file_n][0] = true;
+                    for (int i = 0 ; i < how_many_drawings_in_each_file[2+top_file_n] ; i++)
+                    {
+                        if (which_drawing_among_the_files_is_the_user_on[2+top_file_n][i] == true)
+                        {
+                            load_a_new_drawing_to_the_screen(2+top_file_n , i);
+                        }
+                    }
                 }
             }
             else if (mousePos.x > 145*scale && mousePos.x < 485*scale && mousePos.y > 487*scale && mousePos.y < 513*scale)
@@ -172,6 +353,7 @@ void update_the_buttons()
                 {
                     is_which_file_is_selected_clicked[3+top_file_n] = 0;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
                 }
                 
                 else if (is_which_file_is_selected_clicked[3+top_file_n] == 0)
@@ -182,6 +364,15 @@ void update_the_buttons()
                     }
                     is_which_file_is_selected_clicked[3+top_file_n] = 1;
                     clean_the_screen();
+                    set_all_selected_files_to_false();
+                    which_drawing_among_the_files_is_the_user_on[3+top_file_n][0] = true;
+                    for (int i = 0 ; i < how_many_drawings_in_each_file[3+top_file_n] ; i++)
+                    {
+                        if (which_drawing_among_the_files_is_the_user_on[3+top_file_n][i] == true)
+                        {
+                            load_a_new_drawing_to_the_screen(3+top_file_n , i);
+                        }
+                    }
                 }
             }
         }
