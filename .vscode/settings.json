@@ -61,6 +61,7 @@
     "stdlib.h": "c",
     "game_setup.h": "c",
     "stdio.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "update_the_files.h": "c"
   }
 }

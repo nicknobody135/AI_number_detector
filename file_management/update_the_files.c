@@ -98,12 +98,8 @@ void load_a_new_drawing_to_the_screen(int which_file , int which_drawing)
     int extra_drawing_increase =  14 + which_drawing*(14 + 900);
     for (int a = 0; a < 36; a++)
     {
-        for (int b = 0; b < 24; b++)
+        for (int b = 0; b < 25; b++)
         {
-            if (contents_of_training_data_files[which_file][extra_drawing_increase+ increaseer] == '\n')
-            {
-                increaseer = increaseer + 1;
-            }
             if (contents_of_training_data_files[which_file][extra_drawing_increase + increaseer] == '1')
             {
                 what_boxes_in_the_middle_are_on[a][b] = 1;
@@ -154,7 +150,11 @@ void delete_a_drawing(int target_file , int target_drawing)
     printf("deleting....\n");
     int increaseer = 0;
     int extra_drawing_increase =  target_drawing*(14 + 900) - 1;
-    memmove(contents_of_training_data_files[target_file] + extra_drawing_increase , contents_of_training_data_files[target_file] + extra_drawing_increase + (14 + 900) , strlen(contents_of_training_data_files[target_file]) - extra_drawing_increase);
+    memmove(contents_of_training_data_files[target_file] + extra_drawing_increase , contents_of_training_data_files[target_file] + extra_drawing_increase + (14 + 900) , strlen(contents_of_training_data_files[target_file]) - extra_drawing_increase - (14 + 900) + 1);
+    for (int i = 0; i < temp_len; i++) 
+    {
+        free(which_drawing_among_the_files_is_the_user_on[i]);
+    }
     free(which_drawing_among_the_files_is_the_user_on);
     load_which_file_the_user_on();
     if (target_drawing == 0)
@@ -168,8 +168,6 @@ void delete_a_drawing(int target_file , int target_drawing)
         load_a_new_drawing_to_the_screen(target_file , target_drawing - 1);
     }
     update_how_many_drawings_in_each_file();
-    printf("%s \n" , contents_of_training_data_files[target_file]);
-    //it works but stuff has to be reloaded instantly like how many drawings and which drawing the user is on and the files will have to be re-numbered and then saved to the disk
 }
 
 void create_a_new_file(int target_file , int target_drawing)
@@ -184,6 +182,4 @@ void create_a_new_file(int target_file , int target_drawing)
     load_which_file_the_user_on();
     which_drawing_among_the_files_is_the_user_on[target_file][target_drawing + 1] = 1;
     load_a_new_drawing_to_the_screen(target_file , target_drawing + 1);
-    
-    printf("%s \n" , contents_of_training_data_files[target_file]);
 }
