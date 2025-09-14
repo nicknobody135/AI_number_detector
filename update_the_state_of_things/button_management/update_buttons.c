@@ -16,7 +16,7 @@ void update_the_buttons()
 {
     time_right_now = clock();
     double time_elapsed = (double)(time_right_now - time_the_button_was_clicked) / CLOCKS_PER_SEC;
-    if(ze_mouse_is_down == true && time_elapsed > 0.2)
+    if(ze_mouse_is_down == true && time_elapsed > 0.05)
     {
         
         all_buttons_of_or_on = true;
@@ -380,7 +380,7 @@ void update_the_buttons()
 
     else
     {
-        if (time_elapsed <= 0.3)
+        if (time_elapsed <= 0.05)
         {
             all_buttons_of_or_on = true;
         }

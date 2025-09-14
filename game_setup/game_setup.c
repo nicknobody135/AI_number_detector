@@ -65,7 +65,6 @@ void setup_game()
     int number_of_boxes_in_middle = 864;
 
     //window set up
-    scale = 1.0f;
     InitWindow(1600*scale, 900*scale, "AI number detector, 0-9");
     SetTargetFPS(30);
     load_images();
