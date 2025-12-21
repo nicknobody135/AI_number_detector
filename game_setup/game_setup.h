@@ -15,6 +15,7 @@ extern bool ze_mouse_is_down;
 extern bool is_the_mouse_really_down;
 extern Vector2 mousePos;
 extern Vector2 lastMospos;
+extern float scroll_amount;
 
 //app clock
 extern int game_clock;
@@ -54,6 +55,9 @@ extern int temp_len;
 extern char **contents_of_training_data_files; 
 extern int *how_many_drawings_in_each_file;
 extern bool **which_drawing_among_the_files_is_the_user_on;
+extern int which_file;
+extern int which_drawing;
+extern bool is_any_file_selected;
 
 //font
 extern Font display_font;

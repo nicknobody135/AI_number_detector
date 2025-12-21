@@ -14,4 +14,7 @@ void load_a_new_drawing_to_the_screen(int which_file , int which_drawing);
 void save_to_file(int which_file_to_save_to , int which_drawing_in_the_file_to_save_to);
 void delete_a_drawing(int target_file , int target_drawing);
 void create_a_new_file(int target_file , int target_drawing);
+int which_file_is_selected();
+int which_drawing_in_said_file_is_selected(int which_file);
+bool check_if_any_file_is_selected();
 #endif

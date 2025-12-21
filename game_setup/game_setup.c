@@ -26,8 +26,10 @@ bool is_file_selector_up_clicked = false;
 bool is_file_selector_down_clicked = false;
 bool what_boxes_in_the_middle_are_on[36][24];
 
+//mouse
 Vector2 mousePos;
 Vector2 lastMospos;
+float scroll_amount;
 
 //file related
 FilePathList files;
@@ -40,6 +42,9 @@ int temp_len = 0;
 char **contents_of_training_data_files = NULL;
 int *how_many_drawings_in_each_file = NULL;
 bool **which_drawing_among_the_files_is_the_user_on;
+int which_file;
+int which_drawing;
+bool is_any_file_selected;
 
 //font
 Font display_font;

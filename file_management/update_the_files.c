@@ -48,15 +48,8 @@ void load_how_many_drawings_in_each_file()
 
 int count_lines(char *vicitm)
 {
-    int n_of_lines = 0;
-    for (int j = 0;j < strlen(vicitm);j++)
-    {
-        if (vicitm[j] == '\n' || vicitm[j] == '\0')
-        {
-            n_of_lines = n_of_lines + 1;
-        }
-    }
-    return n_of_lines + 1;
+    int n_of_lines = (((strlen(vicitm)+1)/914)*37);
+    return n_of_lines;
 }
 
 void update_how_many_drawings_in_each_file()
@@ -182,5 +175,47 @@ void create_a_new_file(int target_file , int target_drawing)
     load_which_file_the_user_on();
     which_drawing_among_the_files_is_the_user_on[target_file][target_drawing + 1] = 1;
     load_a_new_drawing_to_the_screen(target_file , target_drawing + 1);
+}
+
+int which_file_is_selected()
+{
+    int which_file = -1;
+    for (int i = 0; i < temp_len; i++)
+    {
+        if (is_which_file_is_selected_clicked[i] == 1)
+        {
+            which_file = i;
+            break;
+        }
+    }
+    return which_file;
+}
+
+bool check_if_any_file_is_selected()
+{
+    bool is_any_file_selected = false;
+    for (int i = 0; i < temp_len; i++)
+        {
+        if (is_which_file_is_selected_clicked[i] == true)
+        {
+            is_any_file_selected = true;
+        }
+    }
+    return is_any_file_selected;
+}
+
+int which_drawing_in_said_file_is_selected(int which_file)
+{
+    int which_drawing = -1;
+
+    for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
+    {
+        if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
+        {
+            which_drawing = i;
+            break;
+        }
+    }
+    return which_drawing;
 }
 

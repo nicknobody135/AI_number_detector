@@ -9,6 +9,7 @@ void update_mouse_details()
 {
     lastMospos = mousePos;
     mousePos = GetMousePosition();
+    scroll_amount = -1.0f * GetMouseWheelMove();
     if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
     {
         ze_mouse_is_down = true;

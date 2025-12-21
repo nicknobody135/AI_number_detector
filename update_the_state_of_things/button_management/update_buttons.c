@@ -12,6 +12,20 @@ clock_t time_the_button_was_clicked = 0;
 clock_t time_right_now = 0;
 int time_game_has_been_running_for;
 
+bool check_if_anything_is_selected()
+{
+    bool is_any_file_selected = false;
+    for (int i = 0; i < temp_len ; i++)
+    {
+        if (is_which_file_is_selected_clicked[i] == 1)
+        {
+            is_any_file_selected = true;
+            break;
+        }
+    }
+    return is_any_file_selected; 
+}
+
 void update_the_buttons()
 {
     time_right_now = clock();
@@ -23,189 +37,76 @@ void update_the_buttons()
         //saves the time the button was clicked so the button can turn orange for a bit
         time_the_button_was_clicked = clock();
 
+        bool is_any_file_selected = check_if_any_file_is_selected();
+
         //arrow_left
-        if (mousePos.x > 122*scale && mousePos.x < 310*scale && mousePos.y > 575*scale && mousePos.y < 666*scale)
+        if (mousePos.x > 122*scale && mousePos.x < 310*scale && mousePos.y > 575*scale && mousePos.y < 666*scale && is_any_file_selected == true)
         {
             is_left_arrow_button_clicked = true;
             printf("left arrow click\n");
-            int which_file = -1;
-            for (int i = 0; i < temp_len; i++)
+            which_file = which_file_is_selected();
+            which_drawing = which_drawing_in_said_file_is_selected(which_file);
+            if (which_file != -1 && which_drawing != -1 && which_drawing != 0)
             {
-                if (is_which_file_is_selected_clicked[i] == 1)
-                {
-                    which_file = i;
-                    break;
-                }
-            }
-            int current_drawing_in_file = -1;
-
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                if (current_drawing_in_file != 0)
-                {
-                    set_all_selected_files_to_false();
-                    which_drawing_among_the_files_is_the_user_on[which_file][current_drawing_in_file - 1] = true;
-                }
-            }
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                load_a_new_drawing_to_the_screen(which_file , current_drawing_in_file);
+                set_all_selected_files_to_false();
+                which_drawing_among_the_files_is_the_user_on[which_file][which_drawing - 1] = true;
+                which_drawing = which_drawing_in_said_file_is_selected(which_file);
+                load_a_new_drawing_to_the_screen(which_file , which_drawing);
             }
         }
         
         //arrow_right
-        else if (mousePos.x > 358*scale && mousePos.x < 546*scale && mousePos.y > 575*scale && mousePos.y < 666*scale)
+        else if (mousePos.x > 358*scale && mousePos.x < 546*scale && mousePos.y > 575*scale && mousePos.y < 666*scale && is_any_file_selected == true)
         {
             is_right_arrow_button_clicked = true;
             printf("right arrow click\n");
-            int which_file = -1;
-            for (int i = 0; i < temp_len; i++)
+            which_file = which_file_is_selected();
+            which_drawing = which_drawing_in_said_file_is_selected(which_file);
+            if (which_file != -1 && which_drawing != -1 && which_drawing != how_many_drawings_in_each_file[which_file] - 1)
             {
-                if (is_which_file_is_selected_clicked[i] == 1)
-                {
-                    which_file = i;
-                }
-            }
-
-            int current_drawing_in_file = -1;
-
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                }
-            }
-
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                if (current_drawing_in_file != how_many_drawings_in_each_file[which_file] - 1)
-                {
-                    set_all_selected_files_to_false();
-                    which_drawing_among_the_files_is_the_user_on[which_file][current_drawing_in_file + 1] = true;
-                }
-            }
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                load_a_new_drawing_to_the_screen(which_file , current_drawing_in_file);
+                set_all_selected_files_to_false();
+                which_drawing_among_the_files_is_the_user_on[which_file][which_drawing + 1] = true;
+                which_drawing = which_drawing_in_said_file_is_selected(which_file);
+                load_a_new_drawing_to_the_screen(which_file , which_drawing);
             }
         }
 
         //delete_button
-        else if (mousePos.x > 122*scale && mousePos.x < 243*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
+        else if (mousePos.x > 122*scale && mousePos.x < 243*scale && mousePos.y > 164*scale && mousePos.y < 255*scale && check_if_anything_is_selected() == true)
         {
             is_delete_button_clicked = true;
             printf("delete button clicked\n");
-            int which_file = -1;
-            for (int i = 0; i < temp_len; i++)
+            which_file = which_file_is_selected();
+            which_drawing = which_drawing_in_said_file_is_selected(which_file);
+            if (which_file != -1 && which_drawing != -1 && how_many_drawings_in_each_file[which_file] > 1)
             {
-                if (is_which_file_is_selected_clicked[i] == 1)
-                {
-                    which_file = i;
-                    break;
-                }
-            }
-            int current_drawing_in_file = -1;
-
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1 && how_many_drawings_in_each_file[which_file] > 1)
-            {
-                
-                printf("hello\n");
-                delete_a_drawing(which_file , current_drawing_in_file);
+                delete_a_drawing(which_file , which_drawing);
             }
         }
 
         //save_button
-        else if (mousePos.x > 273*scale && mousePos.x < 394*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
+        else if (mousePos.x > 273*scale && mousePos.x < 394*scale && mousePos.y > 164*scale && mousePos.y < 255*scale && check_if_anything_is_selected() == true)
         {
             is_save_button_clicked = true;
             printf("save button clicked\n");
-            int which_file = -1;
-            for (int i = 0; i < temp_len; i++)
+            which_file = which_file_is_selected();
+            which_drawing = which_drawing_in_said_file_is_selected(which_file);
+            if (which_file != -1 && which_drawing != -1)
             {
-                if (is_which_file_is_selected_clicked[i] == 1)
-                {
-                    which_file = i;
-                    break;
-                }
-            }
-            int current_drawing_in_file = -1;
-
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                
-                printf("hello\n");
-                save_to_file(which_file , current_drawing_in_file);
+                save_to_file(which_file , which_drawing);
             }
         }
 
         //new_button
-        else if (mousePos.x > 425*scale && mousePos.x < 546*scale && mousePos.y > 164*scale && mousePos.y < 255*scale)
+        else if (mousePos.x > 425*scale && mousePos.x < 546*scale && mousePos.y > 164*scale && mousePos.y < 255*scale && check_if_anything_is_selected() == true)
         {
             is_new_button_clicked = true;
             printf("new button clicked\n");
-            int which_file = -1;
-            for (int i = 0; i < temp_len; i++)
+            which_file = which_file_is_selected();
+            which_drawing = which_drawing_in_said_file_is_selected(which_file);
+            if (which_file != -1 && which_drawing != -1)
             {
-                if (is_which_file_is_selected_clicked[i] == 1)
-                {
-                    which_file = i;
-                    break;
-                }
-            }
-            int current_drawing_in_file = -1;
-
-            for (int i = 0; i < how_many_drawings_in_each_file[which_file]; i++)
-            {
-                if (which_drawing_among_the_files_is_the_user_on[which_file][i] == 1)
-                {
-                    current_drawing_in_file = i;
-                    break;
-                }
-            }
-            if (which_file != -1 && current_drawing_in_file != -1)
-            {
-                create_a_new_file(which_file , current_drawing_in_file);
+                create_a_new_file(which_file , which_drawing);
             }
         }
 

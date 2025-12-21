@@ -12,10 +12,12 @@ cmd = (
     'update_the_state_of_things\\button_management\\update_buttons.c '
     'drawing_management\\drawing_management.c '
     'file_management\\update_the_files.c '
+    'update_the_state_of_things\\mouse_updates\\scrolling.c '
     '-o main.exe '
     '-I"C:\\raylib\\raylib_desktop\\src" '
     'extras\\libraylib.a '
-    '-lopengl32 -lgdi32 -lwinmm -static'
+    '-lopengl32 -lgdi32 -lwinmm -static '
+    '-g -O0'
 )
 subprocess.run(cmd)
 subprocess.run("main.exe")

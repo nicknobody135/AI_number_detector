@@ -20,12 +20,9 @@ int main()
                 {
                     update_files();
                 }
-            if (game_clock%60 == 0)
-                {
-                    update_how_many_drawings_in_each_file();
-                }
             render_the_screen();
             EndDrawing();
+            //printf("%d\n" , GetFPS());
         }
     CloseWindow();
     return 0;
