@@ -30,7 +30,7 @@ void update_the_buttons()
 {
     time_right_now = clock();
     double time_elapsed = (double)(time_right_now - time_the_button_was_clicked) / CLOCKS_PER_SEC;
-    if(ze_mouse_is_down == true && time_elapsed > 0.05)
+    if(ze_mouse_is_down == true && time_elapsed > 0.1)
     {
         
         all_buttons_of_or_on = true;
@@ -107,6 +107,10 @@ void update_the_buttons()
             if (which_file != -1 && which_drawing != -1)
             {
                 create_a_new_file(which_file , which_drawing);
+                set_all_selected_files_to_false();
+                which_drawing_among_the_files_is_the_user_on[which_file][how_many_drawings_in_each_file[which_file] - 1] = true;
+                which_drawing = which_drawing_in_said_file_is_selected(which_file);
+                load_a_new_drawing_to_the_screen(which_file , which_drawing);
             }
         }
 
@@ -281,7 +285,7 @@ void update_the_buttons()
 
     else
     {
-        if (time_elapsed <= 0.05)
+        if (time_elapsed <= 0.1)
         {
             all_buttons_of_or_on = true;
         }

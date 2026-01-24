@@ -23,6 +23,7 @@ int main()
             render_the_screen();
             EndDrawing();
             //printf("%d\n" , GetFPS());
+            
         }
     CloseWindow();
     return 0;

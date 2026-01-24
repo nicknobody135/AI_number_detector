@@ -129,12 +129,7 @@ void save_to_file(int which_file_to_save_to , int which_drawing_in_the_file_to_s
         }
         increaseer = increaseer + 1;
     }
-
-    for (int i = 0; i < temp_len; i++)
-    {
-        SaveFileText(files.paths[i] , contents_of_training_data_files[i]);
-    }
-    
+    SaveFileText(files.paths[which_file_to_save_to] , contents_of_training_data_files[which_file_to_save_to]);
 }
 
 void delete_a_drawing(int target_file , int target_drawing)
@@ -161,6 +156,7 @@ void delete_a_drawing(int target_file , int target_drawing)
         load_a_new_drawing_to_the_screen(target_file , target_drawing - 1);
     }
     update_how_many_drawings_in_each_file();
+    SaveFileText(files.paths[target_file] , contents_of_training_data_files[target_file]);
 }
 
 void create_a_new_file(int target_file , int target_drawing)
@@ -175,6 +171,7 @@ void create_a_new_file(int target_file , int target_drawing)
     load_which_file_the_user_on();
     which_drawing_among_the_files_is_the_user_on[target_file][target_drawing + 1] = 1;
     load_a_new_drawing_to_the_screen(target_file , target_drawing + 1);
+    SaveFileText(files.paths[target_file] , contents_of_training_data_files[target_file]);
 }
 
 int which_file_is_selected()
