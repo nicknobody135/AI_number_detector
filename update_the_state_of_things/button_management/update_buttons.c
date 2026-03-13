@@ -119,6 +119,8 @@ void update_the_buttons()
         {
             is_run_ai_button_clicked = true;
             printf("run_ai_button button clicked\n");
+            
+
         }
 
         //reset_result_button
