@@ -19,8 +19,8 @@ int target_file_to_choose_drawings_to_convert_to_binary = 0;
 int target_drawing_to_convert_to_binary = 0;
 char line_buffer[25];
 float converted_binary_drawing_from_file[36][24];
-//char file_locations_of_training_data[11][30] = {"set_b\\0s(b).txt" , "set_b\\1s(b).txt" , "set_b\\2s(b).txt" , "set_b\\3s(b).txt" , "set_b\\4s(b).txt" , "set_b\\5s(b).txt" , "set_b\\6s(b).txt" , "set_b\\7s(b).txt" , "set_b\\8s(b).txt" , "set_b\\9s(b).txt"};
-char file_locations_of_training_data[11][30] = {"training_data\\0s(a).txt" , "training_data\\1s(a).txt" , "training_data\\2s(a).txt" , "training_data\\3s(a).txt" , "training_data\\4s(a).txt" , "training_data\\5s(a).txt" , "training_data\\6s(a).txt" , "training_data\\7s(a).txt" , "training_data\\8s(a).txt" , "training_data\\9s(a).txt" , "training_data\\example.txt"};
+char file_locations_of_training_data[11][30] = {"training_data\\set_b\\0s(b).txt" , "training_data\\set_b\\1s(b).txt" , "training_data\\set_b\\2s(b).txt" , "training_data\\set_b\\3s(b).txt" , "training_data\\set_b\\4s(b).txt" , "training_data\\set_b\\5s(b).txt" , "training_data\\set_b\\6s(b).txt" , "training_data\\set_b\\7s(b).txt" , "training_data\\set_b\\8s(b).txt" , "training_data\\set_b\\9s(b).txt"};
+//char file_locations_of_training_data[11][30] = {"training_data\\set_a\\0s(a).txt" , "training_data\\set_a\\1s(a).txt" , "training_data\\set_a\\2s(a).txt" , "training_data\\set_a\\3s(a).txt" , "training_data\\set_a\\4s(a).txt" , "training_data\\set_a\\5s(a).txt" , "training_data\\set_a\\6s(a).txt" , "training_data\\set_a\\7s(a).txt" , "training_data\\set_a\\8s(a).txt" , "training_data\\set_a\\9s(a).txt" , "training_data\\set_a\\example.txt"};
 FILE *target_file;
 FILE *weights_and_biases;
 long weights_and_biases_file_size = 0;
@@ -248,7 +248,7 @@ int forward_propagation()
     for(int a = 0 ; a < 10 ; a++)
     {
         final_outputs[a] = (expf(final_outputs[a]-max)/sum);
-        printf("%d , Ans : %f\n" , a , final_outputs[a]);
+        //printf("%d , Ans : %f\n" , a , final_outputs[a]);
     }
     return 0;
 }
@@ -379,7 +379,6 @@ int back_propagation()
             for(int b = 0 ; b < 10 ; b++)
             {
                 gradient_of_the_second_layer[a] = gradient_of_the_second_layer[a] + (weights_of_second_layer_to_output[b][a]* output_gradient[b]);
-                
             }
             if(pre_relu_results_of_the_second_layer[a] <= 0)
             {
@@ -484,8 +483,6 @@ int back_propagation()
     {
         gradient_of_the_biases_of_first_layer[a] = gradient_of_the_biases_of_first_layer[a]/1000.0f;
     }
-
-
     //*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*//
     //End of results:
     //*-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*//
@@ -614,18 +611,18 @@ int main()
 {
     printf("Ai trainer....\n");
     initialize_weights_and_biases();
-    // cost_function();
-    // for(int i = 0 ; i < 500 ; i++)
-    // {
-    //     printf("%d\n" , i);
-    //     back_propagation();
-    //     update_weights_and_baises();
-    //     //cost_function();
-    // }
-    //cost_function();
-    // save_to_file();
-    convert_txt_to_binary(10 , 8);
-    forward_propagation();
+    cost_function();
+    for(int i = 0 ; i < 1000 ; i++)
+    {
+        printf("%d\n" , i);
+        back_propagation();
+        update_weights_and_baises();
+        //cost_function();
+    }
+    cost_function();
+    save_to_file();
+    //convert_txt_to_binary(10 , 8);
+    //forward_propagation();
     printf("Sucessful Run\n");
     // srand(time(NULL));
     // float val = ((float)rand()/RAND_MAX)*0.2f - 0.1f;

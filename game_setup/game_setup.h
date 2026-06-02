@@ -49,7 +49,7 @@ extern bool clear_the_screen;
 extern FilePathList files;
 extern char **drawing_files;
 extern int drawing_files_lenght;
-extern char what_files_to_show[4][30];
+extern char what_files_to_show[4][35];
 extern int top_file_n;
 extern int temp_len;
 extern char **contents_of_training_data_files; 

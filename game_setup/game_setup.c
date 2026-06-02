@@ -35,7 +35,7 @@ float scroll_amount;
 FilePathList files;
 char **drawing_files = NULL;
 int drawing_files_lenght = 0;
-char what_files_to_show[4][30] = {" " , " " , " " , " "};
+char what_files_to_show[4][35] = {" " , " " , " " , " "};
 bool *is_which_file_is_selected_clicked = NULL;
 int top_file_n = 0;
 int temp_len = 0;
@@ -77,19 +77,20 @@ void setup_game()
 
 
     //detects existing training files
-    files = LoadDirectoryFiles("training_data/");
+    files = LoadDirectoryFiles("training_data\\set_a\\");
     temp_len = files.count;
 
     //file names
     
     drawing_files = malloc(temp_len * sizeof(char*));
     for (int i = 0; i < files.count; i++) 
-        {
-            drawing_files[i] = malloc(100);
-            snprintf(drawing_files[i], 100, "%s", files.paths[i]);
-            strcpy(drawing_files[i], drawing_files[i] + 15);
+    {
+        drawing_files[i] = malloc(100);
+        snprintf(drawing_files[i], 100, "%s", files.paths[i]);
+        strcpy(drawing_files[i], drawing_files[i] + 14);
 
-        }
+    }
+
 
     //load the data of the files:
     load_the_drawings_into_a_char();
