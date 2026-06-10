@@ -87,7 +87,7 @@ void setup_game()
     {
         drawing_files[i] = malloc(100);
         snprintf(drawing_files[i], 100, "%s", files.paths[i]);
-        strcpy(drawing_files[i], drawing_files[i] + 14);
+        strcpy(drawing_files[i], drawing_files[i] + 21);
 
     }
 
