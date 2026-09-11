@@ -13,6 +13,7 @@ cmd = (
     'drawing_management\\drawing_management.c '
     'file_management\\update_the_files.c '
     'update_the_state_of_things\\mouse_updates\\scrolling.c '
+    'ai_stuff\\main_ai_code.c '
     '-o main.exe '
     '-I"C:\\raylib\\raylib_desktop\\src" '
     'extras\\libraylib.a '

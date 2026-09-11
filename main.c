@@ -7,6 +7,7 @@
 #include "clock\clock.h"
 #include "drawing_management\drawing_management.h"
 #include "file_management/update_the_files.h"
+#include "ai_stuff/main_ai_code.h"
 int main()
 {
     setup_game();   //inisilizes all the variables and window settings

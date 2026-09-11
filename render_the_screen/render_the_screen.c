@@ -166,5 +166,58 @@ void render_the_screen()
                 }
             }
         }
+
+        if(display_pridiction_or_no == 1)
+        {
+            if(prediction == 0)
+            {
+                DrawTextEx(display_font , "0" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 1)
+            {
+                DrawTextEx(display_font , "1" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 2)
+            {
+                DrawTextEx(display_font , "2" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 3)
+            {
+                DrawTextEx(display_font , "3" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 4)
+            {
+                DrawTextEx(display_font , "4" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 5)
+            {
+                DrawTextEx(display_font , "5" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 6)
+            {
+                DrawTextEx(display_font , "6" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 7)
+            {
+                DrawTextEx(display_font , "7" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 8)
+            {
+                DrawTextEx(display_font , "8" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+
+            if(prediction == 9)
+            {
+                DrawTextEx(display_font , "9" , (Vector2){1270*scale , 280*scale} , 140*scale , 2 , BLACK);
+            }
+        }
     }
 }

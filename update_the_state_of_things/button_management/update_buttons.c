@@ -4,6 +4,7 @@
 #include "../../game_setup/game_setup.h"
 #include "../../clock/clock.h"
 #include "../../file_management/update_the_files.h"
+#include "../../ai_stuff/main_ai_code.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -118,8 +119,9 @@ void update_the_buttons()
         else if (mousePos.x > 1088*scale && mousePos.x < 1512*scale && mousePos.y > 169*scale && mousePos.y < 260*scale)
         {
             is_run_ai_button_clicked = true;
+            display_pridiction_or_no = 1;
             printf("run_ai_button button clicked\n");
-            
+            forward_propagation(1);
 
         }
 
@@ -127,6 +129,7 @@ void update_the_buttons()
         else if (mousePos.x > 1088*scale && mousePos.x < 1258*scale && mousePos.y > 453*scale && mousePos.y < 544*scale)
         {
             is_reset_result_button_clicked = true;
+            display_pridiction_or_no = 0;
             printf("reset_result button clicked\n");
         }
 

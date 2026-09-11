@@ -4,11 +4,16 @@
 #include "../load_images.h"
 #include <string.h>
 #include "../file_management/update_the_files.h"
+#include "../ai_stuff/main_ai_code.h"
+#include <stdbool.h>
+#include <math.h>
+#include <time.h>
 
 //screen
 const int screenWidth;
 const int screenHeigh;
 float scale;
+bool display_pridiction_or_no = 0;
 
 //buttons
 bool ze_mouse_is_down = false;
@@ -51,6 +56,31 @@ Font display_font;
 
 //drawing
 bool clear_the_screen = false;
+
+//AI File management
+
+FILE *target_file;
+FILE *weights_and_biases;
+long weights_and_biases_file_size = 0;
+bool display_results_or_not = 1;
+
+//Forward propagation varaibles:
+float forward_prop_weights[3246592];
+float forward_prop_biases[3594];
+float forward_prop_results[3594];
+float final_outputs[10];
+int prediction = 0;
+
+//General Neural Network variables:
+
+bool display_result_or_not = 0;
+float weighted_sums[3594];
+float pre_relu_results[3594];
+int individual_layer_size[6] = {1024 , 1024 , 768 , 512 , 256 , 10};
+int layer_size[6] = {0 , 1024 , 2048 , 2816 , 3328 , 3584};
+int weight_offsets[6] = {0 , 884736 , 1933312 , 2719744 , 3112960 , 3244032};
+int training_data_size = 1000;
+
 
 void setup_game()
 {
@@ -100,6 +130,9 @@ void setup_game()
 
     //creates a selector which, allows the user to select a file among many
     load_which_file_the_user_on();
+
+    //loads weights and biases:
+    initialize_weights_and_biases();
 
     //creates the buttons for the files that the user can select
     is_which_file_is_selected_clicked = malloc(temp_len * sizeof(bool));

@@ -4,11 +4,17 @@
 #include "../load_images.h"
 #include <time.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+#include <time.h>
 
 //screen data
 extern const int screenWidth;
 extern const int screenHeigh;
 extern float scale;
+extern bool display_pridiction_or_no;
 
 //mouse related variables
 extern bool ze_mouse_is_down;
@@ -58,6 +64,30 @@ extern bool **which_drawing_among_the_files_is_the_user_on;
 extern int which_file;
 extern int which_drawing;
 extern bool is_any_file_selected;
+
+//AI File management
+extern FILE *target_file;
+extern FILE *weights_and_biases;
+extern long weights_and_biases_file_size;
+extern bool display_results_or_not;
+
+//AI Forward propagation varaibles:
+extern float forward_prop_weights[3246592];
+extern float forward_prop_biases[3594];
+extern float forward_prop_results[3594];
+extern float final_outputs[10];
+extern int prediction;
+
+//General Neural Network variables:
+
+extern bool display_result_or_not;
+extern float weighted_sums[3594];
+extern float pre_relu_results[3594];
+extern int individual_layer_size[6];
+extern int layer_size[6];
+extern int weight_offsets[6];
+extern int training_data_size;
+
 
 //font
 extern Font display_font;
