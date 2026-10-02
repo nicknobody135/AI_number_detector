@@ -13,7 +13,7 @@ int mouse_x;
 
 void update_drawing()
 {   
-    int cellSize = (int)(17 * scale);
+    float draw_cell_size = (17 * scale);
     if (is_the_mouse_really_down && mousePos.x >= 596* scale && mousePos.x < 1004* scale && mousePos.y >= 238* scale && mousePos.y < 850* scale)
     {
         int dx = mousePos.x - lastMospos.x;
@@ -31,22 +31,22 @@ void update_drawing()
             int x = lastMospos.x + dx * i / steps;
             int y = lastMospos.y + dy * i / steps;
 
-            int col = (x - 596* scale) / cellSize;
-            int row = (y - 238* scale) / cellSize;
+            int col = (x - 596* scale) / draw_cell_size;
+            int row = (y - 238* scale) / draw_cell_size;
 
             for (int rr = row - 1; rr <= row + 1; rr++) 
             {
                 if (rr < 0 || rr >= 36) continue;
 
-                int boxY = ((int)(238 * scale)) + rr * cellSize;
-                if (y >= boxY - tolerance && y < boxY + cellSize + tolerance) 
+                int boxY = ((int)(238 * scale)) + rr * draw_cell_size;
+                if (y >= boxY - tolerance && y < boxY + draw_cell_size + tolerance) 
                 {
                     for (int cc = col - 1; cc <= col + 1; cc++) 
                     {
                         if (cc < 0 || cc >= 24) continue;
 
-                        int boxX = (int)(596* scale) + cc * cellSize;
-                        if (x >= boxX - tolerance && x < boxX + cellSize + tolerance) 
+                        int boxX = (int)(596* scale) + cc * draw_cell_size;
+                        if (x >= boxX - tolerance && x < boxX + draw_cell_size + tolerance) 
                         {
                             what_boxes_in_the_middle_are_on[rr][cc] = true;
                         }

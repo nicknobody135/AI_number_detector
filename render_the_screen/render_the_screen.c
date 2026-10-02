@@ -27,18 +27,18 @@ void render_the_screen()
         DrawTexture(What_is_the_name_of_the_file , 358*scale , 716*scale , WHITE);
         DrawTexture(four_files_names , 145*scale , 400*scale , WHITE);
 
-        int cellSize = (int)(17 * scale);
+        float cellSize = (17);
         //Grid of lines in the middle
         while(v_line_counter <= 24)
         {
-            DrawTexture(Vertical_line , ((int)596*scale + (v_line_counter*cellSize)), ((int)238*scale), BLACK);
+            DrawTexture(Vertical_line , ((int)596*scale + (v_line_counter*cellSize*scale)), ((int)238*scale), BLACK);
             v_line_counter = v_line_counter + 1;
         }
         v_line_counter = 0;
 
         while(h_line_counter <= 36)
         {
-            DrawTexture(Horizontal_line , ((int)596*scale), ((int)238*scale) + (h_line_counter*cellSize), BLACK);
+            DrawTexture(Horizontal_line , ((int)596*scale), ((int)238*scale) + (h_line_counter*cellSize*scale), BLACK);
             h_line_counter = h_line_counter + 1;
         }
         h_line_counter = 0;
@@ -105,6 +105,7 @@ void render_the_screen()
             }
         }
         
+        
         //render_the_boxes_in_the_middle
         for (int a = 0; a < 36; a++)
         {
@@ -112,7 +113,14 @@ void render_the_screen()
             {
                 if (what_boxes_in_the_middle_are_on[a][b] == true)
                 {
-                    DrawRectangle((596*scale) + ((cellSize) * b) , (238*scale) + ((cellSize) * a),cellSize , cellSize, BLACK);
+                    //DrawRectangle((596*scale) + ((cellSize*scale) * b) , (238*scale) + ((cellSize*scale) * a), cellSize*scale , cellSize*scale, BLACK);
+                    int x1 = (int)(596 * scale + b * cellSize * scale);
+                    int x2 = (int)(596 * scale + (b + 1) * cellSize * scale);
+
+                    int y1 = (int)(238 * scale + a * cellSize * scale);
+                    int y2 = (int)(238 * scale + (a + 1) * cellSize * scale);
+
+                    DrawRectangle(x1, y1, x2 - x1, y2 - y1, BLACK);
                 }
             }
         }

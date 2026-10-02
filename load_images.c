@@ -43,6 +43,7 @@ Texture2D selected_file_on;
 
 void load_images()
 {
+        printf("scale : %f\n" , scale);
         //stand still UI
         Image temporary = LoadImage("UI_elements//Button.png");
         ImageResize(&temporary, temporary.width * scale, temporary.height * scale);

@@ -107,7 +107,7 @@ void setup_game()
 
 
     //detects existing training files
-    files = LoadDirectoryFiles("training_data\\set_a\\");
+    files = LoadDirectoryFiles("training_data\\set_f\\");
     temp_len = files.count;
 
     //file names

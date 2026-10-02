@@ -20,8 +20,17 @@ int target_file_to_choose_drawings_to_convert_to_binary = 0;
 int target_drawing_to_convert_to_binary = 0;
 char line_buffer[25];
 float converted_binary_drawing_from_file[36][24];
-int training_set_num = 3;
-char file_locations_of_training_data[41][35] = {"training_data\\set_a\\0s(a).txt" , "training_data\\set_a\\1s(a).txt" , "training_data\\set_a\\2s(a).txt" , "training_data\\set_a\\3s(a).txt" , "training_data\\set_a\\4s(a).txt" , "training_data\\set_a\\5s(a).txt" , "training_data\\set_a\\6s(a).txt" , "training_data\\set_a\\7s(a).txt" , "training_data\\set_a\\8s(a).txt" , "training_data\\set_a\\9s(a).txt" , "training_data\\set_b\\0s(b).txt" , "training_data\\set_b\\1s(b).txt" , "training_data\\set_b\\2s(b).txt" , "training_data\\set_b\\3s(b).txt" , "training_data\\set_b\\4s(b).txt" , "training_data\\set_b\\5s(b).txt" , "training_data\\set_b\\6s(b).txt" , "training_data\\set_b\\7s(b).txt" , "training_data\\set_b\\8s(b).txt" , "training_data\\set_b\\9s(b).txt" , "training_data\\set_c\\0s(c).txt" , "training_data\\set_c\\1s(c).txt" , "training_data\\set_c\\2s(c).txt" , "training_data\\set_c\\3s(c).txt" , "training_data\\set_c\\4s(c).txt" , "training_data\\set_c\\5s(c).txt" , "training_data\\set_c\\6s(c).txt" , "training_data\\set_c\\7s(c).txt" , "training_data\\set_c\\8s(c).txt" , "training_data\\set_c\\9s(c).txt" , "training_data\\set_d\\0s(d).txt" , "training_data\\set_d\\1s(d).txt" , "training_data\\set_d\\2s(d).txt" , "training_data\\set_d\\3s(d).txt" , "training_data\\set_d\\4s(d).txt" , "training_data\\set_d\\5s(d).txt" , "training_data\\set_d\\6s(d).txt" , "training_data\\set_d\\7s(d).txt" , "training_data\\set_d\\8s(d).txt" , "training_data\\set_d\\9s(d).txt" , "training_data\\set_a\\example.txt"};
+int training_set_num = 0;
+char file_locations_of_training_data[61][35] = 
+{
+"training_data\\set_a\\0s(a).txt" , "training_data\\set_a\\1s(a).txt" , "training_data\\set_a\\2s(a).txt" , "training_data\\set_a\\3s(a).txt" , "training_data\\set_a\\4s(a).txt" , "training_data\\set_a\\5s(a).txt" , "training_data\\set_a\\6s(a).txt" , "training_data\\set_a\\7s(a).txt" , "training_data\\set_a\\8s(a).txt" , "training_data\\set_a\\9s(a).txt" , 
+"training_data\\set_b\\0s(b).txt" , "training_data\\set_b\\1s(b).txt" , "training_data\\set_b\\2s(b).txt" , "training_data\\set_b\\3s(b).txt" , "training_data\\set_b\\4s(b).txt" , "training_data\\set_b\\5s(b).txt" , "training_data\\set_b\\6s(b).txt" , "training_data\\set_b\\7s(b).txt" , "training_data\\set_b\\8s(b).txt" , "training_data\\set_b\\9s(b).txt" , 
+"training_data\\set_c\\0s(c).txt" , "training_data\\set_c\\1s(c).txt" , "training_data\\set_c\\2s(c).txt" , "training_data\\set_c\\3s(c).txt" , "training_data\\set_c\\4s(c).txt" , "training_data\\set_c\\5s(c).txt" , "training_data\\set_c\\6s(c).txt" , "training_data\\set_c\\7s(c).txt" , "training_data\\set_c\\8s(c).txt" , "training_data\\set_c\\9s(c).txt" , 
+"training_data\\set_d\\0s(d).txt" , "training_data\\set_d\\1s(d).txt" , "training_data\\set_d\\2s(d).txt" , "training_data\\set_d\\3s(d).txt" , "training_data\\set_d\\4s(d).txt" , "training_data\\set_d\\5s(d).txt" , "training_data\\set_d\\6s(d).txt" , "training_data\\set_d\\7s(d).txt" , "training_data\\set_d\\8s(d).txt" , "training_data\\set_d\\9s(d).txt" ,
+"training_data\\set_e\\0s(e).txt" , "training_data\\set_e\\1s(e).txt" , "training_data\\set_e\\2s(e).txt" , "training_data\\set_e\\3s(e).txt" , "training_data\\set_e\\4s(e).txt" , "training_data\\set_e\\5s(e).txt" , "training_data\\set_e\\6s(e).txt" , "training_data\\set_e\\7s(e).txt" , "training_data\\set_e\\8s(e).txt" , "training_data\\set_e\\9s(e).txt" ,
+"training_data\\set_f\\0s(f).txt" , "training_data\\set_f\\1s(f).txt" , "training_data\\set_f\\2s(f).txt" , "training_data\\set_f\\3s(f).txt" , "training_data\\set_f\\4s(f).txt" , "training_data\\set_f\\5s(f).txt" , "training_data\\set_f\\6s(f).txt" , "training_data\\set_f\\7s(f).txt" , "training_data\\set_f\\8s(f).txt" , "training_data\\set_f\\9s(f).txt" ,
+"training_data\\set_a\\example.txt"
+};
 FILE *target_file;
 FILE *weights_and_biases;
 long weights_and_biases_file_size = 0;
@@ -185,6 +194,7 @@ void forward_propagation(bool display_results_or_not)
                 forward_prop_results[b + layer_size[a]] = pre_relu_results[b + layer_size[a]];
             }   
             float max = forward_prop_results[3584];
+            prediction = 0;
             for(int c = 3584 ; c < 3594 ; c++)
             {
                 if(forward_prop_results[c] > max)
@@ -199,17 +209,17 @@ void forward_propagation(bool display_results_or_not)
                 sum = sum + expf(forward_prop_results[c] - max);
             }
             
-            if(display_results_or_not == 1)printf("Prediction : %d\n" , prediction);
 
             for(int c = 0 ; c < 10 ; c++)
             {
                 final_outputs[c] = (expf(forward_prop_results[c+3584]-max)/sum);
                 if(display_results_or_not == 1)
                 {
-                    printf("%d , Ans : %f\n" , c , final_outputs[c]);
+                    printf("%d - Ans : %f\n" , c , final_outputs[c]);
                 }
             }
             
+            if(display_results_or_not == 1)printf("Prediction : %d\n" , prediction);
         }
     }
 
@@ -233,7 +243,7 @@ void cost_function()
         // }
     }
     cost = cost/training_data_size;
-    printf("Cost : %f\n" , cost);
+    printf("Cost : %f, for set number : %d\n" , cost , training_set_num+1);
 }
 
 void back_propagation()
@@ -390,7 +400,7 @@ void save_weights_and_biases_to_file()
         fwrite(&val , 4 , 1 , weights_and_biases);
     }
 
-    printf("Size of file %ld , Expected : 13000744\n" , weights_and_biases_file_size);
+    printf("Size of file %ld , Expected : 13000744\n\n" , weights_and_biases_file_size);
     fclose(weights_and_biases);
 }
 
@@ -399,49 +409,69 @@ int main()
     printf("Ai trainer....\n");
     initialize_weights_and_biases();
 
-    convert_txt_to_binary(0 , 8 , 4);
-    forward_propagation(1);
+    // convert_txt_to_binary(3 , 0 , 4);
+    // forward_propagation(1);
 
-    // training_set_num = 0;
+    // training_set_num = 5;
     
-    //cost_function();
-
-    // for(int i = 0 ; i < 20 ; i++)
-    // {
-    //     printf("%d\n" , i);
-    //     for(int a = 0 ; a < 4 ; a++)
-    //     {
-    //         training_set_num = a;
-    //         back_propagation();
-    //         weight_updater();
-    //         if(i%5==0)cost_function();
-    //     }
-    //     save_weights_and_biases_to_file();
-    // }
-
     // cost_function();
 
-    // save_weights_and_biases_to_file();
+    //*------------------------------------------------------------------------------------------------------------*//
+    for(int b = 0 ; b < 51 ; b += 10)
+        {
+            training_set_num = b;
+            cost_function();
+            printf("\n");
+        }
+    //*------------------------------------------------------------------------------------------------------------*//
+
+    //trainer:
+
+
+    for(int i = 0 ; i < 2 ; i++)
+    {
+        for(int a = 0 ; a < 54 ; a++)
+        {
+            if(i%5==0 && i!=0 && a==0)
+            {
+                for(int b = 0 ; b < 51 ; b += 10)
+                {
+                    training_set_num = b;
+                    cost_function();
+                    printf("\n");
+                }
+            }
+            printf("training set : %d of iteration : %d\n" , a , i);
+            printf("\n");
+            training_set_num = a;
+            back_propagation();
+            printf("\n");
+            weight_updater();
+        }
+        save_weights_and_biases_to_file();
+    }
+
+    save_weights_and_biases_to_file();
 
     //*------------------------------------------------------------------------------------------------------------*//
-    //for(int i = 0 ; i < 4 ; i++)
-    //{
-    //    training_set_num = i;
-    //    cost_function();
-    //}
-    //*------------------------------------------------------------------------------------------------------------*//
-
-    printf("Sucessful Run\n");
-
+    for(int i = 0 ; i < 6 ; i++)
+    {
+       training_set_num = i;
+       cost_function();
+    }
     //*------------------------------------------------------------------------------------------------------------*//
     // srand(time(NULL));
     // float val = ((float)rand()/RAND_MAX)*0.2f - 0.1f;
-    // weights_and_biases = fopen("ai_stuff\\new_neural_network_weights_and_biases.bin" , "wb");
+    // weights_and_biases = fopen("ai_stuff\\neural_network_weights_and_biases.bin" , "wb");
     // for(int a = 0 ; a < 3250186 ; a++)
     // {
     //     float val = ((float)rand()/RAND_MAX)*0.2f - 0.1f;
     //     fwrite(&val , 4 , 1 , weights_and_biases);
     // }
+    //*------------------------------------------------------------------------------------------------------------*//
+
+    printf("Sucessful Run\n");
+
     //*------------------------------------------------------------------------------------------------------------*//
 
     return 0;
