@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <time.h>
+#include <windows.h>
 
 //input 864
 //first layer 1024
@@ -31,10 +32,11 @@ char file_locations_of_training_data[61][35] =
 "training_data\\set_f\\0s(f).txt" , "training_data\\set_f\\1s(f).txt" , "training_data\\set_f\\2s(f).txt" , "training_data\\set_f\\3s(f).txt" , "training_data\\set_f\\4s(f).txt" , "training_data\\set_f\\5s(f).txt" , "training_data\\set_f\\6s(f).txt" , "training_data\\set_f\\7s(f).txt" , "training_data\\set_f\\8s(f).txt" , "training_data\\set_f\\9s(f).txt" ,
 "training_data\\set_a\\example.txt"
 };
+
 FILE *target_file;
 FILE *weights_and_biases;
 long weights_and_biases_file_size = 0;
-bool display_results_or_not = 0;
+int display_results_or_not = 0;
 
 //Forward propagation varaibles:
 float forward_prop_weights[3246592];
@@ -43,6 +45,7 @@ float forward_prop_results[3594];
 float final_outputs[10];
 float cost;
 int prediction;
+float percent_correct = 0.0f;
 
 //Back propagation:
 
@@ -50,7 +53,7 @@ float gradients_of_the_outputs[3594];
 float gradients_of_the_baises[3594];
 float gradients_of_the_weights[3246592];
 float expected_outputs[10];
-float learning_rate = 0.1f;
+float learning_rate = 0.05f;
 
 //General Neural Network variables:
 
@@ -69,7 +72,7 @@ void convert_txt_to_binary(int target_file_to_choose_drawings_to_convert_to_bina
 
 void initialize_weights_and_biases();
 
-void forward_propagation(bool display_results_or_not);
+void forward_propagation(int display_results_or_not);
 
 void cost_function();
 
@@ -134,7 +137,7 @@ void initialize_weights_and_biases()
     fclose(weights_and_biases);
 }
 
-void forward_propagation(bool display_results_or_not)
+void forward_propagation(int display_results_or_not)
 {
     //*------------------------------------------------------------------------------------------------------------*//
 
@@ -231,19 +234,22 @@ void cost_function()
 {
     printf("Calculating Cost ...........\n");
     cost = 0.0f;
+    percent_correct = 0.0f;
     for (int i = 0  ; i < training_data_size ; i++)
     {
         convert_txt_to_binary((int)((i/(training_data_size/1.0f))*10.0f) , i%((int)training_data_size/10) , training_set_num);
         forward_propagation(0);
+        //printf("%d , %d\n" , prediction , ((int)((i/(training_data_size/1.0f))*10.0f)));
+        if(((int)((i/(training_data_size/1.0f))*10.0f)) == prediction)
+        {
+            percent_correct = percent_correct + 1.0f;
+        }
         cost = cost+(-logf(final_outputs[(int)((i/(training_data_size/1.0f))*10.0f)] + 1e-7f));
-
-        // if(i%100 == 0)
-        // {
-        //     printf("Percent Done : %f\n" , ((float)i/(float)training_data_size)*100.0f);
-        // }
     }
+    percent_correct = (percent_correct/training_data_size)*100.0f;
     cost = cost/training_data_size;
     printf("Cost : %f, for set number : %d\n" , cost , training_set_num+1);
+    printf("Percent correct : %f\n" , percent_correct);
 }
 
 void back_propagation()
@@ -409,7 +415,7 @@ int main()
     printf("Ai trainer....\n");
     initialize_weights_and_biases();
 
-    // convert_txt_to_binary(3 , 0 , 4);
+    // convert_txt_to_binary(0 , 0 , 0);
     // forward_propagation(1);
 
     // training_set_num = 5;
@@ -417,47 +423,48 @@ int main()
     // cost_function();
 
     //*------------------------------------------------------------------------------------------------------------*//
-    for(int b = 0 ; b < 51 ; b += 10)
-        {
-            training_set_num = b;
-            cost_function();
-            printf("\n");
-        }
+    for(int a = 0 ; a < 6 ; a++)
+    {
+        training_set_num = a;
+        cost_function();
+        printf("\n");
+    }
     //*------------------------------------------------------------------------------------------------------------*//
 
     //trainer:
 
 
-    for(int i = 0 ; i < 2 ; i++)
+    for(int i = 0 ; i < 40 ; i++)
     {
-        for(int a = 0 ; a < 54 ; a++)
+        for(int a = 0 ; a < 5 ; a++)
         {
-            if(i%5==0 && i!=0 && a==0)
-            {
-                for(int b = 0 ; b < 51 ; b += 10)
-                {
-                    training_set_num = b;
-                    cost_function();
-                    printf("\n");
-                }
-            }
+            training_set_num = a;
             printf("training set : %d of iteration : %d\n" , a , i);
             printf("\n");
-            training_set_num = a;
             back_propagation();
             printf("\n");
             weight_updater();
         }
         save_weights_and_biases_to_file();
+        if(i%5==0 && i!=0)
+        {
+            for(int a = 0 ; a < 6 ; a++)
+            {
+                training_set_num = a;
+                cost_function();
+                printf("\n");
+            }
+        }
     }
 
     save_weights_and_biases_to_file();
 
     //*------------------------------------------------------------------------------------------------------------*//
-    for(int i = 0 ; i < 6 ; i++)
+    for(int a = 0 ; a < 6 ; a++)
     {
-       training_set_num = i;
-       cost_function();
+        training_set_num = a;
+        cost_function();
+        printf("\n");
     }
     //*------------------------------------------------------------------------------------------------------------*//
     // srand(time(NULL));

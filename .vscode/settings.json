@@ -67,5 +67,6 @@
     "drawing_management.h": "c",
     "update_mouse.h": "c",
     "update_buttons.h": "c"
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system"
 }
